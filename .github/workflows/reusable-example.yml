@@ -1,0 +1,7 @@
+name: Called workflow
+on: [workflow_call]
+jobs:
+  Say-Hi-From-Called-Workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello from called workflow"
