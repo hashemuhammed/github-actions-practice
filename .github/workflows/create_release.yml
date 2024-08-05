@@ -56,6 +56,6 @@ jobs:
           source_branch: release/${{ steps.changelog.outputs.tag }}
           target_branch: dev
           assignee: hashemuhammed
-          reviewer: hashemuhammed
+          reviewer: hashemuhammed 
           label: release
           
