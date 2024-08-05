@@ -1,4 +1,4 @@
-# 0.6.0 (2024-08-05)
+# 0.7.0 (2024-08-05)
 
 
 ### Features
@@ -9,6 +9,7 @@
 * changed to ubuntu ([3c37bc7](https://github.com/hashemuhammed/github-actions-practice/commit/3c37bc7793dc10bca0a9bf12531e7629d0ae04a8))
 * remoed skip pull ([425acaa](https://github.com/hashemuhammed/github-actions-practice/commit/425acaa85f0ebc1da7e743b95bdd46a17b67c09b))
 * removed skip tag ([1898854](https://github.com/hashemuhammed/github-actions-practice/commit/18988544996f82f62ddefa3b1920f2ca41cd0f2f))
+* updated release-count ([4f3d7a8](https://github.com/hashemuhammed/github-actions-practice/commit/4f3d7a83ef9d263a5b6f045703985d88e7764712))
 * updated skip tag ([11211e3](https://github.com/hashemuhammed/github-actions-practice/commit/11211e3ad999efdc3cd2d74c323ded5962aa186f))
 
 
