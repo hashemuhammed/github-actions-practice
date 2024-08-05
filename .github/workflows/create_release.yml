@@ -40,7 +40,7 @@ jobs:
             This PR for a new release ${{ steps.changelog.outputs.tag }} to be merged with master.
           source_branch: release/${{ steps.changelog.outputs.tag }}
           target_branch: master
-          assignee: SeifHegazay
+          assignee: hashemuhammed
           reviewer: hadeer-e
           label: release
 
@@ -55,7 +55,7 @@ jobs:
             This PR for updating changelog for release ${{ steps.changelog.outputs.tag }} to be merged with dev.
           source_branch: release/${{ steps.changelog.outputs.tag }}
           target_branch: dev
-          assignee: SeifHegazay
+          assignee: hashemuhammed
           reviewer: hadeer-e
           label: release
           
