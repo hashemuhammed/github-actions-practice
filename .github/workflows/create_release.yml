@@ -19,7 +19,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           git-push: 'false'
-          git-message: 'chore(release): {version}'
+          git-message: 'chore(release): {version}'  
           output-file: 'CHANGELOG.md'
           skip-tag: 'false'
           skip-git-pull: "true"
