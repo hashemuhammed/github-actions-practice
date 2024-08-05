@@ -15,27 +15,24 @@ jobs:
 
       - name: Conventional Changelog Action
         id: changelog
-        uses: TriPSs/conventional-changelog-action@v5
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          git-push: 'false'
-          git-message: 'chore(release): {version}'  
-          release-count: '0'
+        uses: mikepenz/release-changelog-builder-action@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push new release branch
         run: |
-          git checkout -b release/${{ steps.changelog.outputs.tag }}
-          git push origin release/${{ steps.changelog.outputs.tag }}
+          git checkout -b release/${{ steps.changelog.outputs.toTag }}
+          git push origin release/${{ steps.changelog.outputs.toTag }}
 
       - name: Open pull reqeust to master
         uses: devops-infra/action-pull-request@v0.5.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          title: release ${{ steps.changelog.outputs.tag }}
+          title: release ${{ steps.changelog.outputs.toTag }}
           body: |
             Hi!
-            This PR for a new release ${{ steps.changelog.outputs.tag }} to be merged with master.
-          source_branch: release/${{ steps.changelog.outputs.tag }}
+            This PR for a new release ${{ steps.changelog.outputs.toTag }} to be merged with master.
+          source_branch: release/${{ steps.changelog.outputs.toTag }}
           target_branch: master
           assignee: hashemuhammed
           reviewer: hashemuhammed
@@ -46,11 +43,11 @@ jobs:
         uses: devops-infra/action-pull-request@v0.5.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          title: changelog ${{ steps.changelog.outputs.tag }}
+          title: changelog ${{ steps.changelog.outputs.toTag }}
           body: |
             Hi!
-            This PR for updating changelog for release ${{ steps.changelog.outputs.tag }} to be merged with dev.
-          source_branch: release/${{ steps.changelog.outputs.tag }}
+            This PR for updating changelog for release ${{ steps.changelog.outputs.toTag }} to be merged with dev.
+          source_branch: release/${{ steps.changelog.outputs.toTag }}
           target_branch: dev
           assignee: hashemuhammed 
           reviewer: hashemuhammed 
