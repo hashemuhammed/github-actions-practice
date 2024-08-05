@@ -17,4 +17,4 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
   Call-Called-Workflow:
-    uses: ./reusable-example.yml
+    uses: ./reusable-example.yml@v1.0
