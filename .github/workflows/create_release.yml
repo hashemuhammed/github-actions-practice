@@ -11,7 +11,17 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - name: Verify current branch
+        run: |
+          echo "Current branch: $(git branch --show-current)"
+          git log -1
 
+      - name: Pull the latest changes
+        run: |
+          CURRENT_BRANCH=$(git branch --show-current)
+          echo "Pulling latest changes for branch: $CURRENT_BRANCH"
+          git pull origin $CURRENT_BRANCH
+          
       - name: Conventional Changelog Action
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3
