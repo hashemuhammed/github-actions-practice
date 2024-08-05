@@ -55,7 +55,7 @@ jobs:
             This PR for updating changelog for release ${{ steps.changelog.outputs.tag }} to be merged with dev.
           source_branch: release/${{ steps.changelog.outputs.tag }}
           target_branch: dev
-          assignee: hashemuhammed
+          assignee: hashemuhammed 
           reviewer: hashemuhammed 
           label: release
-          
+           
