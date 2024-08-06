@@ -1,4 +1,4 @@
-name: Create Release Branch
+name: Old release
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ env:
 
 jobs:
   create-release:
-    runs-on: [ prod-runner ]
+    runs-on: [ ubuntu-latest ]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
