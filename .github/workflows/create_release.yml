@@ -42,7 +42,7 @@ jobs:
           
           # Export new tag and changelog to environment
           echo "NEW_TAG=${new_tag}" >> $GITHUB_ENV
-          echo "CHANGELOG=${changelog}" >> $GITHUB_ENV
+          echo "$changelog" > changelog.txt
  
       - name: Update package.json with new version
         run: |
