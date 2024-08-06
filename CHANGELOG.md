@@ -1,8 +1,9 @@
-# [17.4.0](https://github.com/hashemuhammed/github-actions-practice/compare/v1.3.1...v17.4.0) (2024-08-06)
+## [17.4.1](https://github.com/hashemuhammed/github-actions-practice/compare/v17.4.0...v17.4.1) (2024-08-06)
 
 
 ### Bug Fixes
 
+* space ([861c065](https://github.com/hashemuhammed/github-actions-practice/commit/861c0655863565dfa7a441fd10940ab81e845927))
 * updated version ([c3a10ea](https://github.com/hashemuhammed/github-actions-practice/commit/c3a10ea991d43ffe4666aa00b78e86e6e5eab082))
 
 
@@ -90,16 +91,6 @@
 
 * bla bla ([5e6046b](https://github.com/hashemuhammed/github-actions-practice/commit/5e6046b0b8b8dff96ae243c025a54e9f4ba4c7a6))
 * version ([7e6d468](https://github.com/hashemuhammed/github-actions-practice/commit/7e6d46830c60d110904e3b65eb7bb93443219823))
-
-
-
-## [0.10.3](https://github.com/hashemuhammed/github-actions-practice/compare/v0.10.2...v0.10.3) (2024-08-06)
-
-
-### Features
-
-* edited package.json ([613f149](https://github.com/hashemuhammed/github-actions-practice/commit/613f149ed614fdada60bf0d88991c9e0a9a6b150))
-* testing updating pacakage ([a39f4b9](https://github.com/hashemuhammed/github-actions-practice/commit/a39f4b9d95b0632f2c6531804e1b57fba188343c))
 
 
 
