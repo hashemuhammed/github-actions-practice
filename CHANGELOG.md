@@ -19,6 +19,16 @@
 
 
 
+## [v0.10.2] - 2024-08-06
+### :sparkles: New Features
+- [`9b65c38`](https://github.com/hashemuhammed/github-actions-practice/commit/9b65c3870c555755138828393b4a2c35c08374f8) - added space *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
+- [`c8d98a3`](https://github.com/hashemuhammed/github-actions-practice/commit/c8d98a3d6741ca5653046e056d5ec5b386af0897) - updating package.json *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
+- [`64a967d`](https://github.com/hashemuhammed/github-actions-practice/commit/64a967d1ce459f7538252a400613e3d0ce16e690) - added create release v2 *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
+- [`55c3cbd`](https://github.com/hashemuhammed/github-actions-practice/commit/55c3cbd4e9a94f5cdf05a49bb5396b4ae621f45d) - updated release v2 *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
+- [`ab800b4`](https://github.com/hashemuhammed/github-actions-practice/commit/ab800b4f023b994240c3f5dc8fab92ccbab1aa53) - added name *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
+- [`2a42f04`](https://github.com/hashemuhammed/github-actions-practice/commit/2a42f0479c444a70bab97861f579b7a65b6d22c8) - updated package.json updating *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
+
+
 ## [v0.10.1] - 2024-08-06
 ### :sparkles: New Features
 - [`27c2fd9`](https://github.com/hashemuhammed/github-actions-practice/commit/27c2fd9bbf4348d9c713edffcef38f4770951a9b) - tag calculation *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
@@ -32,3 +42,4 @@
 
 [v20240806094244]: https://github.com/hashemuhammed/github-actions-practice/compare/v20240806093833...v20240806094244
 [v0.10.1]: https://github.com/hashemuhammed/github-actions-practice/compare/v...v0.10.1
+[v0.10.2]: https://github.com/hashemuhammed/github-actions-practice/compare/v0.10.1...v0.10.2
