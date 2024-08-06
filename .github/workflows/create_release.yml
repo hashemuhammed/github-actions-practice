@@ -40,6 +40,13 @@ jobs:
           token: ${{ github.token }}
           tag: v${{ env.RELEASE_VERSION }}
 
+      - name: Commit CHANGELOG.md
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: release/${{ env.RELEASE_VERSION }}
+          commit_message: 'docs: update CHANGELOG.md for Release ${{ env.RELEASE_VERSION }} [skip ci]'
+          file_pattern: CHANGELOG.md
+
       - name: Open pull request to master
         uses: devops-infra/action-pull-request@v0.5.5
         with:
