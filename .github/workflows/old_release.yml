@@ -23,9 +23,8 @@ jobs:
           git-push: 'false'
           git-message: 'chore(release): {version}'
           output-file: 'CHANGELOG.md'
-          skip-on-empty: 'true'
+          skip-on-empty: 'false'
           skip-tag: 'true'
-          skip-git-pull: "true"
           release-count: "7"
 
       - name: Push new release branch
@@ -33,7 +32,7 @@ jobs:
           git checkout -b release/${{ steps.changelog.outputs.tag }}
           git push origin release/${{ steps.changelog.outputs.tag }}
 
-      - name: Open pull reqeust to master
+      - name: Open pull reqeust to master 
         uses: devops-infra/action-pull-request@v0.5.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -47,7 +46,7 @@ jobs:
           reviewer: hashemuhammed
           label: release
 
-
+ 
       - name: Open pull reqeust to dev
         uses: devops-infra/action-pull-request@v0.5.5
         with:

@@ -4,4 +4,4 @@ jobs:
   Say-Hi-From-Called-Workflow:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello from called workflow"
+      - run: echo "Hello from called workflow" 
