@@ -30,9 +30,9 @@ jobs:
         run: |
           standard-version --dry-run
           latest_tag=$(git tag -l | sort -V | tail -n 1)
-          new_tag=$(standard-version --dry-run | grep 'Next version' | awk '{print $NF}')
+          new_tag=$(standard-version --dry-run | grep 'tagging release' | awk '{print $NF}')
           echo "NEW_TAG=${new_tag}" >> $GITHUB_ENV
-          
+
       - name: Create and push new release branch
         run: |
           git checkout -b release/${{ env.NEW_TAG }}
