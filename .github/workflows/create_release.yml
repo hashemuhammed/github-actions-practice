@@ -5,52 +5,60 @@ on:
 
 jobs:
   create-release:
-    runs-on: [ ubuntu-latest ]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
           
+      - name: Set release version
+        id: set_release_version
+        run: |
+          release_version=$(date +'%Y%m%d%H%M%S')
+          echo "RELEASE_VERSION=${release_version}" >> $GITHUB_ENV
+
+      - name: Create and push new release branch
+        run: |
+          git checkout -b release/${{ env.RELEASE_VERSION }}
+          git push origin release/${{ env.RELEASE_VERSION }}
+
+      - name: Create new tag
+        run: |
+          git tag -a v${{ env.RELEASE_VERSION }} -m "Release ${{ env.RELEASE_VERSION }}"
+          git push origin v${{ env.RELEASE_VERSION }}
 
       - name: Conventional Changelog Action
         id: changelog
         uses: requarks/changelog-action@v1
         with:
           token: ${{ github.token }}
-          tag: ${{ github.ref_name }}
+          tag: v${{ env.RELEASE_VERSION }}
 
-      - name: Push new release branch
-        run: |
-          git checkout -b release/${{ github.ref_name  }}
-          git push origin release/${{ github.ref_name  }}
-
-      - name: Open pull reqeust to master
+      - name: Open pull request to master
         uses: devops-infra/action-pull-request@v0.5.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          title: release ${{ github.ref_name  }}
+          title: "Release ${{ env.RELEASE_VERSION }}"
           body: |
             Hi!
-            This PR for a new release ${{ github.ref_name  }} to be merged with master.
-          source_branch: release/${{ github.ref_name  }}
+            This PR is for a new release ${{ env.RELEASE_VERSION }} to be merged with master.
+          source_branch: release/${{ env.RELEASE_VERSION }}
           target_branch: master
           assignee: hashemuhammed
           reviewer: hashemuhammed
           label: release
 
-
-      - name: Open pull reqeust to dev
+      - name: Open pull request to dev
         uses: devops-infra/action-pull-request@v0.5.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          title: changelog ${{ github.ref_name  }}
+          title: "Changelog ${{ env.RELEASE_VERSION }}"
           body: |
             Hi!
-            This PR for updating changelog for release ${{ github.ref_name  }} to be merged with dev.
-          source_branch: release/${{ github.ref_name  }}
+            This PR is for updating changelog for release ${{ env.RELEASE_VERSION }} to be merged with dev.
+          source_branch: release/${{ env.RELEASE_VERSION }}
           target_branch: dev
           assignee: hashemuhammed 
           reviewer: hashemuhammed 
           label: release
-           
