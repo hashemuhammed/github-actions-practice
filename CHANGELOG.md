@@ -19,6 +19,15 @@
 
 
 
+## [v0.10.4] - 2024-08-06
+### :bug: Bug Fixes
+- [`5e6046b`](https://github.com/hashemuhammed/github-actions-practice/commit/5e6046b0b8b8dff96ae243c025a54e9f4ba4c7a6) - bla bla *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
+- [`7e6d468`](https://github.com/hashemuhammed/github-actions-practice/commit/7e6d46830c60d110904e3b65eb7bb93443219823) - version *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
+
+### :wrench: Chores
+- [`78507c9`](https://github.com/hashemuhammed/github-actions-practice/commit/78507c9730b4ee256c8f468c660234d86b04863a) - update version to v0.10.4 *(commit by [@actions-user](https://github.com/actions-user))*
+
+
 ## [v0.10.2] - 2024-08-06
 ### :sparkles: New Features
 - [`9b65c38`](https://github.com/hashemuhammed/github-actions-practice/commit/9b65c3870c555755138828393b4a2c35c08374f8) - added space *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
@@ -43,3 +52,4 @@
 [v20240806094244]: https://github.com/hashemuhammed/github-actions-practice/compare/v20240806093833...v20240806094244
 [v0.10.1]: https://github.com/hashemuhammed/github-actions-practice/compare/v...v0.10.1
 [v0.10.2]: https://github.com/hashemuhammed/github-actions-practice/compare/v0.10.1...v0.10.2
+[v0.10.4]: https://github.com/hashemuhammed/github-actions-practice/compare/v0.10.3...v0.10.4
