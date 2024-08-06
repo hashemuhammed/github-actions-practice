@@ -72,8 +72,8 @@ jobs:
           git commit -m "docs: update CHANGELOG.md for Release ${{ env.NEW_TAG }} [skip ci]"
           git push origin release/${{ env.NEW_TAG }}
 
-          
-      - name: Open pull request to master
+
+      - name: Open pull request to master 
         uses: devops-infra/action-pull-request@v0.5.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
