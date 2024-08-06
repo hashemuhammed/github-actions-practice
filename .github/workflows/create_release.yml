@@ -27,9 +27,10 @@ jobs:
           new_tag=$(echo "$standard_version_output" | grep 'tagging release' | awk '{print $NF}')
           changelog=$(echo "$standard_version_output" | sed -n '/^---$/,/^---$/p' | sed '1d;$d')
           
-          echo "$changelog" > CHANGELOG.tmp
-          cat CHANGELOG.md >> CHANGELOG.tmp
+          echo -e "\n\n$changelog\n\n$(cat CHANGELOG.md)" > CHANGELOG.tmp
           mv CHANGELOG.tmp CHANGELOG.md
+          mv CHANGELOG.tmp CHANGELOG.md
+
 
           echo "$changelog" 
 
