@@ -1,0 +1,63 @@
+name: Create Release Branch
+
+on:
+  workflow_dispatch:
+
+env:
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+
+jobs:
+  create-release:
+    runs-on: [ prod-runner ]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Conventional Changelog Action
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          git-push: 'false'
+          git-message: 'chore(release): {version}'
+          output-file: 'CHANGELOG.md'
+          skip-on-empty: 'true'
+          skip-tag: 'true'
+          skip-git-pull: "true"
+          release-count: "7"
+
+      - name: Push new release branch
+        run: |
+          git checkout -b release/${{ steps.changelog.outputs.tag }}
+          git push origin release/${{ steps.changelog.outputs.tag }}
+
+      - name: Open pull reqeust to master
+        uses: devops-infra/action-pull-request@v0.5.5
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          title: release ${{ steps.changelog.outputs.tag }}
+          body: |
+            Hi!
+            This PR for a new release ${{ steps.changelog.outputs.tag }} to be merged with master.
+          source_branch: release/${{ steps.changelog.outputs.tag }}
+          target_branch: master
+          assignee: hashemuhammed
+          reviewer: hashemuhammed
+          label: release
+
+
+      - name: Open pull reqeust to dev
+        uses: devops-infra/action-pull-request@v0.5.5
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          title: changelog ${{ steps.changelog.outputs.tag }}
+          body: |
+            Hi!
+            This PR for updating changelog for release ${{ steps.changelog.outputs.tag }} to be merged with dev.
+          source_branch: release/${{ steps.changelog.outputs.tag }}
+          target_branch: dev
+          assignee: hashemuhammed
+          reviewer: hashemuhammed
+          label: release
