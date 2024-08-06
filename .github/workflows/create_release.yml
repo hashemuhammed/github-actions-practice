@@ -26,18 +26,23 @@ jobs:
         run: |
           # Run standard-version dry-run and capture output
           standard_version_output=$(standard-version --dry-run)
-          echo "$standard_version_output"
           
           # Extract the new tag from the dry-run output
           new_tag=$(echo "$standard_version_output" | grep 'tagging release' | awk '{print $NF}')
           
-          # Log the latest tag and new tag for debugging
+          # Extract the changelog from the dry-run output
+          changelog=$(echo "$standard_version_output" | awk '/### \[Unreleased\]/, /### \[.*\]/')
+          
+          # Log the latest tag, new tag, and changelog for debugging
           latest_tag=$(git tag -l | sort -V | tail -n 1)
           echo "Latest tag: $latest_tag"
           echo "New tag: $new_tag"
+          echo "Changelog:"
+          echo "$changelog"
           
-          # Export new tag to environment
+          # Export new tag and changelog to environment
           echo "NEW_TAG=${new_tag}" >> $GITHUB_ENV
+          echo "CHANGELOG=${changelog}" >> $GITHUB_ENV
  
       - name: Update package.json with new version
         run: |
@@ -45,7 +50,6 @@ jobs:
             echo "No new version detected. Skipping package.json update."
             exit 0
           fi
-          # Remove leading 'v' from version string for package.json
           new_version=$(echo "${{ env.NEW_TAG }}" | sed 's/^v//')
           jq --arg version "$new_version" '.version = $version' package.json > package.json.tmp
           mv package.json.tmp package.json
