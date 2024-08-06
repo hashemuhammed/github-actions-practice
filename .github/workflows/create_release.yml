@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm install -g standard-version
-
+ 
       - name: Generate release version and Update Changelog
         run: |
           standard_version_output=$(standard-version --dry-run)
