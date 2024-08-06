@@ -1,3 +1,15 @@
+### [0.12.5](https://github.com/hashemuhammed/github-actions-practice/compare/v0.12.2...v0.12.5) (2024-08-06)
+
+
+### Features
+
+* updated pipeline ([cb84b8a](https://github.com/hashemuhammed/github-actions-practice/commit/cb84b8a329311d0d61ec8b95b81d8644f6f72948))
+
+
+### Bug Fixes
+
+* changelog ([3c649d5](https://github.com/hashemuhammed/github-actions-practice/commit/3c649d52341dcb58af9217339056a63878ee63dc))
+* changing changelog directly ([8ba3daa](https://github.com/hashemuhammed/github-actions-practice/commit/8ba3daa52330fc2a9065922b74e70981ed8b3859))
 $changelog 
 
 # 0.10.0 (2024-08-06)
