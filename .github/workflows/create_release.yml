@@ -29,6 +29,12 @@ jobs:
           new_tag=$(standard-version --dry-run | grep 'tagging release' | awk '{print $NF}')
           echo "NEW_TAG=${new_tag}" >> $GITHUB_ENV
  
+      - name: Update package.json with new version
+        run: |
+          npm version ${{ env.NEW_VERSION }} --no-git-tag-version
+          git add package.json
+          git commit -m "chore: update version to ${{ env.NEW_VERSION }}"
+
       - name: Create and push new release branch
         run: |
           git checkout -b release/${{ env.NEW_TAG }}
@@ -52,6 +58,8 @@ jobs:
           branch: release/${{ env.NEW_TAG }}
           commit_message: 'docs: update CHANGELOG.md for Release ${{ env.NEW_TAG }} [skip ci]'
           file_pattern: CHANGELOG.md
+
+
 
       - name: Open pull request to master
         uses: devops-infra/action-pull-request@v0.5.5
