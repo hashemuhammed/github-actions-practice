@@ -39,9 +39,7 @@ jobs:
           echo "Changelog:"
           echo "$changelog"
 
-          changelog=$(cat changelog.txt | sed '/^[[:space:]]*$/d')
-
-          { echo "$changelog"; echo; cat CHANGELOG.md; } > CHANGELOG.tmp
+          echo -e "\n\n$changelog\n\n$(cat CHANGELOG.md)" > CHANGELOG.tmp
           mv CHANGELOG.tmp CHANGELOG.md
           
           # Export new tag and changelog to environment
