@@ -23,9 +23,8 @@ jobs:
           git-push: 'false'
           git-message: 'chore(release): {version}'
           output-file: 'CHANGELOG.md'
-          skip-on-empty: 'true'
+          skip-on-empty: 'false'
           skip-tag: 'true'
-          skip-git-pull: "true"
           release-count: "7"
 
       - name: Push new release branch
