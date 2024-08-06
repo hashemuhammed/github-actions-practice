@@ -25,7 +25,7 @@ jobs:
           output-file: 'CHANGELOG.md'
           skip-on-empty: 'false'
           skip-tag: 'true'
-          release-count: "7"
+          release-count: "10"
 
       - name: Push new release branch
         run: |
