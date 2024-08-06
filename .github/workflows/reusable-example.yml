@@ -1,6 +1,6 @@
 name: Called workflow
 on: [workflow_call]
-jobs:
+jobs: 
   Say-Hi-From-Called-Workflow:
     runs-on: ubuntu-latest
     steps:
