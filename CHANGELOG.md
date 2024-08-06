@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/hashemuhammed/github-actions-practice/compare/v1.1.0...v1.2.0) (2024-08-06)
+
+
+### Features
+
+* changed main ([6fdba7e](https://github.com/hashemuhammed/github-actions-practice/commit/6fdba7e13429b2a9ea744a086bc65ad0ca98a7e8))
+
+
+
 # [1.1.0](https://github.com/hashemuhammed/github-actions-practice/compare/v0.12.2...v1.1.0) (2024-08-06)
 
 
@@ -66,16 +75,6 @@
 
 * bla bla ([5e6046b](https://github.com/hashemuhammed/github-actions-practice/commit/5e6046b0b8b8dff96ae243c025a54e9f4ba4c7a6))
 * version ([7e6d468](https://github.com/hashemuhammed/github-actions-practice/commit/7e6d46830c60d110904e3b65eb7bb93443219823))
-
-
-
-## [0.10.3](https://github.com/hashemuhammed/github-actions-practice/compare/v0.10.2...v0.10.3) (2024-08-06)
-
-
-### Features
-
-* edited package.json ([613f149](https://github.com/hashemuhammed/github-actions-practice/commit/613f149ed614fdada60bf0d88991c9e0a9a6b150))
-* testing updating pacakage ([a39f4b9](https://github.com/hashemuhammed/github-actions-practice/commit/a39f4b9d95b0632f2c6531804e1b57fba188343c))
 
 
 
