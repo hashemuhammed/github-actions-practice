@@ -21,30 +21,16 @@ jobs:
         run: |
           npm install -g standard-version
 
-      - name: Generate release version and changelog
-        id: generate_version
+      - name: Generate release version and Update Changelog
         run: |
-          # Run standard-version dry-run and capture output
           standard_version_output=$(standard-version --dry-run)
-          
-          # Extract the new tag from the dry-run output
           new_tag=$(echo "$standard_version_output" | grep 'tagging release' | awk '{print $NF}')
-          
-          # Extract the changelog from the dry-run output
           changelog=$(echo "$standard_version_output" | sed -n '/^---$/,/^---$/p' | sed '1d;$d')
-          
-          # Log the latest tag, new tag, and changelog for debugging
-          latest_tag=$(git tag -l | sort -V | tail -n 1)
-          echo "Latest tag: $latest_tag"
-          echo "New tag: $new_tag"
-          echo "Changelog:"
-          echo "$changelog"
           
           echo "$changelog" > CHANGELOG.tmp
           cat CHANGELOG.md >> CHANGELOG.tmp
           mv CHANGELOG.tmp CHANGELOG.md
 
-          # Export new tag and changelog to environment
           echo "NEW_TAG=${new_tag}" >> $GITHUB_ENV
           echo "$changelog" > changelog.txt
 
@@ -65,7 +51,7 @@ jobs:
           git checkout -b release/${{ env.NEW_TAG }}
           git push origin release/${{ env.NEW_TAG }}
 
-      - name: Commit CHANGELOG.md manually
+      - name: Commit CHANGELOG.md 
         run: |
           git add CHANGELOG.md
           git commit -m "docs: update CHANGELOG.md for Release ${{ env.NEW_TAG }} [skip ci]"
