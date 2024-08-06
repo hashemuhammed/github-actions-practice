@@ -26,16 +26,6 @@ jobs:
       - name: Calculate new tag
         id: calculate_new_tag
         run: |
-          if [ -z "${{ env.LATEST_TAG }}" ]; then
-            new_tag="0.1.0"
-          else
-            IFS='.' read -r -a version <<< "${{ env.LATEST_TAG#v}}"
-            major="${version[0]}"
-            minor="${version[1]}"
-            patch="${version[2]}"
-            patch=$((patch + 1))
-            new_tag="${major}.${minor}.${patch}"
-          fi
           echo "NEW_TAG=v${new_tag}" >> $GITHUB_ENV
 
       - name: Create and push new release branch
