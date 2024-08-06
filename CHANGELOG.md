@@ -19,8 +19,16 @@
 
 
 
+## [v0.10.1] - 2024-08-06
+### :sparkles: New Features
+- [`27c2fd9`](https://github.com/hashemuhammed/github-actions-practice/commit/27c2fd9bbf4348d9c713edffcef38f4770951a9b) - tag calculation *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
+- [`5973a54`](https://github.com/hashemuhammed/github-actions-practice/commit/5973a54cd9d9e32715339ace58740828cbdf2228) - updated pipeline *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
+- [`6ad1759`](https://github.com/hashemuhammed/github-actions-practice/commit/6ad175980731bd38fe01f53e08c290c88402aa2d) - commiting changelog *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
+
+
 ## [v20240806094244] - 2024-08-06
 ### :sparkles: New Features
 - [`be9ad6f`](https://github.com/hashemuhammed/github-actions-practice/commit/be9ad6fd356515addd42debd9d827b2d2736cdff) - cimmiting changelog *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
 
 [v20240806094244]: https://github.com/hashemuhammed/github-actions-practice/compare/v20240806093833...v20240806094244
+[v0.10.1]: https://github.com/hashemuhammed/github-actions-practice/compare/v...v0.10.1
