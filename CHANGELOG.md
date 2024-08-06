@@ -1,3 +1,7 @@
+## [1.3.1](https://github.com/hashemuhammed/github-actions-practice/compare/v1.3.0...v1.3.1) (2024-08-06)
+
+
+
 # [1.3.0](https://github.com/hashemuhammed/github-actions-practice/compare/v1.1.0...v1.3.0) (2024-08-06)
 
 
@@ -66,16 +70,6 @@
 ### Features
 
 * added new feature ([0d8c762](https://github.com/hashemuhammed/github-actions-practice/commit/0d8c7624df1c0319bba73bb75974ddda912b0371))
-
-
-
-## [0.10.4](https://github.com/hashemuhammed/github-actions-practice/compare/v0.10.3...v0.10.4) (2024-08-06)
-
-
-### Bug Fixes
-
-* bla bla ([5e6046b](https://github.com/hashemuhammed/github-actions-practice/commit/5e6046b0b8b8dff96ae243c025a54e9f4ba4c7a6))
-* version ([7e6d468](https://github.com/hashemuhammed/github-actions-practice/commit/7e6d46830c60d110904e3b65eb7bb93443219823))
 
 
 
