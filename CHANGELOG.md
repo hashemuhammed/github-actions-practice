@@ -1,4 +1,4 @@
-# 0.8.0 (2024-08-06)
+# 0.9.0 (2024-08-06)
 
 
 ### Features
@@ -7,6 +7,7 @@
 * added space ([7a1e711](https://github.com/hashemuhammed/github-actions-practice/commit/7a1e7114ebcc8898cb09be3049cba29fa885bdd3))
 * added space from feature1 ([79111c7](https://github.com/hashemuhammed/github-actions-practice/commit/79111c7d3f886311dc992b806f7201e3f9458d86))
 * changed action for changelog ([13927a5](https://github.com/hashemuhammed/github-actions-practice/commit/13927a581c19f79ca5baa66fde8687377a3ca888))
+* changed release count to 5 ([90a41e6](https://github.com/hashemuhammed/github-actions-practice/commit/90a41e673f80df810112577a945cbaeaf1a09880))
 * changed to ubuntu ([3c37bc7](https://github.com/hashemuhammed/github-actions-practice/commit/3c37bc7793dc10bca0a9bf12531e7629d0ae04a8))
 * remoed skip pull ([425acaa](https://github.com/hashemuhammed/github-actions-practice/commit/425acaa85f0ebc1da7e743b95bdd46a17b67c09b))
 * removed skip tag ([1898854](https://github.com/hashemuhammed/github-actions-practice/commit/18988544996f82f62ddefa3b1920f2ca41cd0f2f))
