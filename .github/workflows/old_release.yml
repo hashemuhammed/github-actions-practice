@@ -17,15 +17,14 @@ jobs:
 
       - name: Conventional Changelog Action
         id: changelog
-        uses: TriPSs/conventional-changelog-action@v3
+        uses: TriPSs/conventional-changelog-action@v5
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           git-push: 'false'
           git-message: 'chore(release): {version}'
           output-file: 'CHANGELOG.md'
           skip-on-empty: 'false'
-          skip-tag: 'true'
-          release-count: "10"
+          release-count: "100"
 
       - name: Push new release branch
         run: |
