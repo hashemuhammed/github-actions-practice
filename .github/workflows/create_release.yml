@@ -16,10 +16,6 @@ jobs:
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
-
-      - name: Get latest tag
-        id: get-latest-tag
-        uses: actions-ecosystem/action-get-latest-tag@v1
           
       - name: Install dependencies
         run: |
@@ -49,6 +45,13 @@ jobs:
         with:
           token: ${{ github.token }}
           tag: ${{ env.NEW_TAG }}
+
+      - name: Commit CHANGELOG.md
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: release/${{ env.NEW_TAG }}
+          commit_message: 'docs: update CHANGELOG.md for Release ${{ env.NEW_TAG }} [skip ci]'
+          file_pattern: CHANGELOG.md
 
       - name: Open pull request to master
         uses: devops-infra/action-pull-request@v0.5.5
