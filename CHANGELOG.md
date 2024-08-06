@@ -1,5 +1,14 @@
 
 
+### [22.1.1](https://github.com/hashemuhammed/github-actions-practice/compare/v22.1.0...v22.1.1) (2024-08-06)
+
+
+### Bug Fixes
+
+* removed comments ([9678671](https://github.com/hashemuhammed/github-actions-practice/commit/9678671ba80093feb2ee05565089f06768ecd7d1))
+
+
+
 ## [22.1.0](https://github.com/hashemuhammed/github-actions-practice/compare/v22.0.0...v22.1.0) (2024-08-06)
 
 
