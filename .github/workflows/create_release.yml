@@ -5,57 +5,86 @@ on:
 
 jobs:
   create-release:
-    runs-on: [ ubuntu-latest ]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
+      - name: Set Git user info
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
           
+      - name: Install dependencies
+        run: |
+          npm install -g standard-version
+
+      - name: Generate release version and changelog
+        id: generate_version
+        run: |
+          standard-version --dry-run
+          latest_tag=$(git tag -l | sort -V | tail -n 1)
+          new_tag=$(standard-version --dry-run | grep 'tagging release' | awk '{print $NF}')
+          echo "NEW_TAG=${new_tag}" >> $GITHUB_ENV
+ 
+      - name: Update package.json with new version
+        run: |
+          npm version ${{ env.NEW_VERSION }} --no-git-tag-version
+          git add package.json
+          git commit -m "chore: update version to ${{ env.NEW_VERSION }}"
+
+      - name: Create and push new release branch
+        run: |
+          git checkout -b release/${{ env.NEW_TAG }}
+          git push origin release/${{ env.NEW_TAG }}
+
+      - name: Create new tag
+        run: |
+          git tag -a ${{ env.NEW_TAG }} -m "Release ${{ env.NEW_TAG }}"
+          git push origin ${{ env.NEW_TAG }}
 
       - name: Conventional Changelog Action
         id: changelog
-        uses: TriPSs/conventional-changelog-action@v3
+        uses: requarks/changelog-action@v1
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          git-push: 'false'
-          git-message: 'chore(release): {version}'
-          output-file: 'CHANGELOG.md'
-          skip-on-empty: 'true'
-          skip-tag: 'true'
-          skip-git-pull: "true"
+          token: ${{ github.token }}
+          tag: ${{ env.NEW_TAG }}
 
-      - name: Push new release branch
-        run: |
-          git checkout -b release/${{ steps.changelog.outputs.tag }}
-          git push origin release/${{ steps.changelog.outputs.tag }}
+      - name: Commit CHANGELOG.md
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: release/${{ env.NEW_TAG }}
+          commit_message: 'docs: update CHANGELOG.md for Release ${{ env.NEW_TAG }} [skip ci]'
+          file_pattern: CHANGELOG.md
 
-      - name: Open pull reqeust to master
+
+
+      - name: Open pull request to master
         uses: devops-infra/action-pull-request@v0.5.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          title: release ${{ steps.changelog.outputs.tag }}
+          title: "Release ${{ env.NEW_TAG }}"
           body: |
             Hi!
-            This PR for a new release ${{ steps.changelog.outputs.tag }} to be merged with master.
-          source_branch: release/${{ steps.changelog.outputs.tag }}
+            This PR is for a new release ${{ env.NEW_TAG }} to be merged with master.
+          source_branch: release/${{ env.NEW_TAG }}
           target_branch: master
           assignee: hashemuhammed
           reviewer: hashemuhammed
           label: release
 
-
-      - name: Open pull reqeust to dev
+      - name: Open pull request to dev
         uses: devops-infra/action-pull-request@v0.5.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          title: changelog ${{ steps.changelog.outputs.tag }}
+          title: "Changelog ${{ env.NEW_TAG }}"
           body: |
             Hi!
-            This PR for updating changelog for release ${{ steps.changelog.outputs.tag }} to be merged with dev.
-          source_branch: release/${{ steps.changelog.outputs.tag }}
+            This PR is for updating changelog for release ${{ env.NEW_TAG }} to be merged with dev.
+          source_branch: release/${{ env.NEW_TAG }}
           target_branch: dev
-          assignee: hashemuhammed
-          reviewer: hashemuhammed
+          assignee: hashemuhammed 
+          reviewer: hashemuhammed 
           label: release
-          
