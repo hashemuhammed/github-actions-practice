@@ -19,6 +19,20 @@
 
 
 
+## [v0.11.0] - 2024-08-06
+### :boom: BREAKING CHANGES
+- due to [`da5d7ea`](https://github.com/hashemuhammed/github-actions-practice/commit/da5d7ea389b42ab6ebf9a2a427b2f26f2258e3db) - update endpoint behavior *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*:
+
+  update endpoint behavior
+
+
+### :sparkles: New Features
+- [`da5d7ea`](https://github.com/hashemuhammed/github-actions-practice/commit/da5d7ea389b42ab6ebf9a2a427b2f26f2258e3db) - **api**: update endpoint behavior *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
+
+### :wrench: Chores
+- [`fcf4382`](https://github.com/hashemuhammed/github-actions-practice/commit/fcf4382e2558cae5c07428b65b3c516e225cbf04) - update version to v0.11.0 *(commit by [@actions-user](https://github.com/actions-user))*
+
+
 ## [v0.10.4] - 2024-08-06
 ### :bug: Bug Fixes
 - [`5e6046b`](https://github.com/hashemuhammed/github-actions-practice/commit/5e6046b0b8b8dff96ae243c025a54e9f4ba4c7a6) - bla bla *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
@@ -53,3 +67,4 @@
 [v0.10.1]: https://github.com/hashemuhammed/github-actions-practice/compare/v...v0.10.1
 [v0.10.2]: https://github.com/hashemuhammed/github-actions-practice/compare/v0.10.1...v0.10.2
 [v0.10.4]: https://github.com/hashemuhammed/github-actions-practice/compare/v0.10.3...v0.10.4
+[v0.11.0]: https://github.com/hashemuhammed/github-actions-practice/compare/v0.10.5...v0.11.0
