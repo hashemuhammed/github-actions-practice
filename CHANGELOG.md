@@ -19,6 +19,25 @@
 
 
 
+## [v0.12.0] - 2024-08-06
+### :boom: BREAKING CHANGES
+- due to [`5d3aaa8`](https://github.com/hashemuhammed/github-actions-practice/commit/5d3aaa89e08165c0d3d654ecea8ef084155f80ad) - update pipeline behavior *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*:
+
+  update pipeline behavior
+
+- due to [`3bce709`](https://github.com/hashemuhammed/github-actions-practice/commit/3bce7096ccf9cdea6007bb742ccef004ffac9eaf) - update pipeline behavior *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*:
+
+  update pipeline behavior
+
+
+### :sparkles: New Features
+- [`5d3aaa8`](https://github.com/hashemuhammed/github-actions-practice/commit/5d3aaa89e08165c0d3d654ecea8ef084155f80ad) - **api**: update pipeline behavior *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
+- [`3bce709`](https://github.com/hashemuhammed/github-actions-practice/commit/3bce7096ccf9cdea6007bb742ccef004ffac9eaf) - **api**: update pipeline behavior *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
+
+### :wrench: Chores
+- [`c819b0a`](https://github.com/hashemuhammed/github-actions-practice/commit/c819b0aff0313f3825f375b89227710e7fe0f20b) - update version to v0.12.0 *(commit by [@actions-user](https://github.com/actions-user))*
+
+
 ## [v0.11.0] - 2024-08-06
 ### :boom: BREAKING CHANGES
 - due to [`da5d7ea`](https://github.com/hashemuhammed/github-actions-practice/commit/da5d7ea389b42ab6ebf9a2a427b2f26f2258e3db) - update endpoint behavior *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*:
@@ -68,3 +87,4 @@
 [v0.10.2]: https://github.com/hashemuhammed/github-actions-practice/compare/v0.10.1...v0.10.2
 [v0.10.4]: https://github.com/hashemuhammed/github-actions-practice/compare/v0.10.3...v0.10.4
 [v0.11.0]: https://github.com/hashemuhammed/github-actions-practice/compare/v0.10.5...v0.11.0
+[v0.12.0]: https://github.com/hashemuhammed/github-actions-practice/compare/v0.11.0...v0.12.0
