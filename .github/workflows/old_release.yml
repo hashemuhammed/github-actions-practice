@@ -47,7 +47,7 @@ jobs:
           reviewer: hashemuhammed
           label: release
 
-
+ 
       - name: Open pull reqeust to dev
         uses: devops-infra/action-pull-request@v0.5.5
         with:
