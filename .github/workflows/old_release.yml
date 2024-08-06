@@ -33,7 +33,7 @@ jobs:
           git checkout -b release/${{ steps.changelog.outputs.tag }}
           git push origin release/${{ steps.changelog.outputs.tag }}
 
-      - name: Open pull reqeust to master
+      - name: Open pull reqeust to master 
         uses: devops-infra/action-pull-request@v0.5.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
