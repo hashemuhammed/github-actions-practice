@@ -19,6 +19,15 @@
 
 
 
+## [v0.12.2] - 2024-08-06
+### :sparkles: New Features
+- [`cd2aecf`](https://github.com/hashemuhammed/github-actions-practice/commit/cd2aecfa44f8327789724a3637392e79a2b8ba95) - sed *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
+- [`069d63f`](https://github.com/hashemuhammed/github-actions-practice/commit/069d63f69c4fd3b8a9c7446a31d6b15ec417aad1) - changelog to file *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
+
+### :wrench: Chores
+- [`beb1aa4`](https://github.com/hashemuhammed/github-actions-practice/commit/beb1aa47a4a748b422b77593b598960d26dd77ad) - update version to v0.12.2 *(commit by [@actions-user](https://github.com/actions-user))*
+
+
 ## [v0.12.1] - 2024-08-06
 ### :sparkles: New Features
 - [`fb6ffa1`](https://github.com/hashemuhammed/github-actions-practice/commit/fb6ffa1ec863c5b173c374beb6d4525c57fe68b1) - changlog updated *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
@@ -97,3 +106,4 @@
 [v0.11.0]: https://github.com/hashemuhammed/github-actions-practice/compare/v0.10.5...v0.11.0
 [v0.12.0]: https://github.com/hashemuhammed/github-actions-practice/compare/v0.11.0...v0.12.0
 [v0.12.1]: https://github.com/hashemuhammed/github-actions-practice/compare/v0.12.0...v0.12.1
+[v0.12.2]: https://github.com/hashemuhammed/github-actions-practice/compare/v0.12.1...v0.12.2
