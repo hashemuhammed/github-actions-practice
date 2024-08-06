@@ -40,8 +40,10 @@ jobs:
           echo "Changelog:"
           echo "$changelog"
           
-          sed -i '1s/^/$changelog /' CHANGELOG.md
-          
+          echo "$changelog" > CHANGELOG.tmp
+          cat CHANGELOG.md >> CHANGELOG.tmp
+          mv CHANGELOG.tmp CHANGELOG.md
+
           # Export new tag and changelog to environment
           echo "NEW_TAG=${new_tag}" >> $GITHUB_ENV
           echo "$changelog" > changelog.txt
