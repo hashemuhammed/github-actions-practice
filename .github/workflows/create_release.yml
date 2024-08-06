@@ -6,10 +6,10 @@ on:
 jobs:
   create-release:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with: 
+        with:
           fetch-depth: 0
 
       - name: Set Git user info
@@ -20,64 +20,55 @@ jobs:
       - name: Install dependencies
         run: |
           npm install -g standard-version
-
-      - name: Generate release version and changelog
-        id: generate_version
+ 
+      - name: Update CHANGELOG.md manually
         run: |
           # Run standard-version dry-run and capture output
           standard_version_output=$(standard-version --dry-run)
-          echo "$standard_version_output"
           
           # Extract the new tag from the dry-run output
           new_tag=$(echo "$standard_version_output" | grep 'tagging release' | awk '{print $NF}')
           
-          # Log the latest tag and new tag for debugging
+          # Extract the changelog from the dry-run output
+          changelog=$(echo "$standard_version_output" | sed -n '/^---$/,/^---$/p' | sed '1d;$d')
+
+          # Log the latest tag, new tag, and changelog for debugging
           latest_tag=$(git tag -l | sort -V | tail -n 1)
           echo "Latest tag: $latest_tag"
           echo "New tag: $new_tag"
+          echo "Changelog:"
+          echo "$changelog"
+
+          changelog=$(cat changelog.txt | sed '/^[[:space:]]*$/d')
+
+          { echo "$changelog"; echo; cat CHANGELOG.md; } > CHANGELOG.tmp
+          mv CHANGELOG.tmp CHANGELOG.md
           
-          # Export new tag to environment
+          # Export new tag and changelog to environment
           echo "NEW_TAG=${new_tag}" >> $GITHUB_ENV
- 
+
+
+
       - name: Update package.json with new version
         run: |
           if [ -z "${{ env.NEW_TAG }}" ]; then
             echo "No new version detected. Skipping package.json update."
             exit 0
           fi
-          # Remove leading 'v' from version string for package.json
           new_version=$(echo "${{ env.NEW_TAG }}" | sed 's/^v//')
           jq --arg version "$new_version" '.version = $version' package.json > package.json.tmp
           mv package.json.tmp package.json
           git add package.json
           git commit -m "chore: update version to ${{ env.NEW_TAG }}"
-
       - name: Create and push new release branch
         run: |
           git checkout -b release/${{ env.NEW_TAG }}
           git push origin release/${{ env.NEW_TAG }}
-
-      - name: Create new tag
+      - name: Commit CHANGELOG.md 
         run: |
-          git tag -a ${{ env.NEW_TAG }} -m "Release ${{ env.NEW_TAG }}"
-          git push origin ${{ env.NEW_TAG }}
-
-      - name: Conventional Changelog Action
-        id: changelog 
-        uses: requarks/changelog-action@v1
-        with:
-          token: ${{ github.token }}
-          tag: ${{ env.NEW_TAG }}
-
-      - name: Commit CHANGELOG.md
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          branch: release/${{ env.NEW_TAG }}
-          commit_message: 'docs: update CHANGELOG.md for Release ${{ env.NEW_TAG }} [skip ci]'
-          file_pattern: CHANGELOG.md
-
-
-
+          git add CHANGELOG.md
+          git commit -m "docs: update CHANGELOG.md for Release ${{ env.NEW_TAG }} [skip ci]"
+          git push origin release/${{ env.NEW_TAG }}
       - name: Open pull request to master
         uses: devops-infra/action-pull-request@v0.5.5
         with:
@@ -87,7 +78,7 @@ jobs:
             Hi!
             This PR is for a new release ${{ env.NEW_TAG }} to be merged with master.
           source_branch: release/${{ env.NEW_TAG }}
-          target_branch: master
+          target_branch: main
           assignee: hashemuhammed
           reviewer: hashemuhammed
           label: release
