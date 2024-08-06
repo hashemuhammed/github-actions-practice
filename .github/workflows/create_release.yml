@@ -21,9 +21,9 @@ jobs:
         run: |
           npm install -g standard-version
 
-    - name: Generate release version and changelog
-      id: generate_version
-      run: |
+      - name: Generate release version and changelog
+        id: generate_version
+        run: |
         # Run standard-version dry-run and capture output
         standard_version_output=$(standard-version --dry-run)
         echo "$standard_version_output"
