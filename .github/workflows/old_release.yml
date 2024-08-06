@@ -42,7 +42,7 @@ jobs:
             Hi!
             This PR for a new release ${{ steps.changelog.outputs.tag }} to be merged with master.
           source_branch: release/${{ steps.changelog.outputs.tag }}
-          target_branch: master
+          target_branch: main
           assignee: hashemuhammed
           reviewer: hashemuhammed
           label: release
