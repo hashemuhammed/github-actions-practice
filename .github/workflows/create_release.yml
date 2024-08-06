@@ -18,16 +18,21 @@ jobs:
           git config --global user.name "GitHub Actions"
 
       - name: Get latest tag
-        id: get_latest_tag
-        run: |
-          latest_tag=$(git tag -l | sort -V | tail -n 1)
-          echo "LATEST_TAG=${latest_tag}" >> $GITHUB_ENV
+        id: get-latest-tag
+        uses: actions-ecosystem/action-get-latest-tag@v1
           
-      - name: Calculate new tag
-        id: calculate_new_tag
+      - name: Install dependencies
         run: |
-          echo "NEW_TAG=v${new_tag}" >> $GITHUB_ENV
+          npm install -g standard-version
 
+      - name: Generate release version and changelog
+        id: generate_version
+        run: |
+          standard-version --dry-run
+          latest_tag=$(git tag -l | sort -V | tail -n 1)
+          new_tag=$(standard-version --dry-run | grep 'Next version' | awk '{print $NF}')
+          echo "NEW_TAG=${new_tag}" >> $GITHUB_ENV
+          
       - name: Create and push new release branch
         run: |
           git checkout -b release/${{ env.NEW_TAG }}
