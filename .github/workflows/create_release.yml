@@ -18,25 +18,26 @@ jobs:
 
       - name: Conventional Changelog Action
         id: changelog
-        uses: TriPSs/conventional-changelog-action@v5
+        uses: mikepenz/release-changelog-builder-action@{latest-release}
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          release_version: ${{ github.event.inputs.release_version }}
+          owner: "hashem"
+          ignorePreReleases: "true"
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push new release branch
         run: |
-          git checkout -b release/${{ github.event.inputs.release_version }}
-          git push origin release/${{ github.event.inputs.release_version }}
+          git checkout -b release/${{ steps.changelog.output.toTag }}
+          git push origin release/${{ steps.changelog.output.toTag }}
 
       - name: Open pull request to master
         uses: devops-infra/action-pull-request@v0.5.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          title: release ${{ github.event.inputs.release_version }}
+          title: release ${{ steps.changelog.output.toTag }}
           body: |
             Hi!
-            This PR is for a new release ${{ github.event.inputs.release_version }} to be merged with master.
-          source_branch: release/${{ github.event.inputs.release_version }}
+            This PR is for a new release ${{ steps.changelog.output.toTag }} to be merged with master.
+          source_branch: release/${{ steps.changelog.output.toTag }}
           target_branch: master
           assignee: hashemuhammed
           reviewer: hashemuhammed
@@ -46,11 +47,11 @@ jobs:
         uses: devops-infra/action-pull-request@v0.5.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          title: changelog ${{ github.event.inputs.release_version }}
+          title: changelog ${{ steps.changelog.output.toTag }}
           body: |
             Hi!
-            This PR is for updating the changelog for release ${{ github.event.inputs.release_version }} to be merged with dev.
-          source_branch: release/${{ github.event.inputs.release_version }}
+            This PR is for updating the changelog for release ${{ steps.changelog.output.toTag }} to be merged with dev.
+          source_branch: release/${{ steps.changelog.output.toTag }}
           target_branch: dev
           assignee: hashemuhammed 
           reviewer: hashemuhammed 
