@@ -24,9 +24,19 @@ jobs:
       - name: Generate release version and changelog
         id: generate_version
         run: |
-          standard-version --dry-run
+          # Run standard-version dry-run and capture output
+          standard_version_output=$(standard-version --dry-run)
+          echo "$standard_version_output"
+          
+          # Extract the new tag from the dry-run output
+          new_tag=$(echo "$standard_version_output" | grep 'tagging release' | awk '{print $NF}')
+          
+          # Log the latest tag and new tag for debugging
           latest_tag=$(git tag -l | sort -V | tail -n 1)
-          new_tag=$(standard-version --dry-run | grep 'tagging release' | awk '{print $NF}')
+          echo "Latest tag: $latest_tag"
+          echo "New tag: $new_tag"
+          
+          # Export new tag to environment
           echo "NEW_TAG=${new_tag}" >> $GITHUB_ENV
  
       - name: Update package.json with new version
