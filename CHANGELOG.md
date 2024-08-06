@@ -19,6 +19,14 @@
 
 
 
+## [v0.12.1] - 2024-08-06
+### :sparkles: New Features
+- [`fb6ffa1`](https://github.com/hashemuhammed/github-actions-practice/commit/fb6ffa1ec863c5b173c374beb6d4525c57fe68b1) - changlog updated *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*
+
+### :wrench: Chores
+- [`05f5d8f`](https://github.com/hashemuhammed/github-actions-practice/commit/05f5d8ff62d7e40d8f9ddc24900919cb76bac93a) - update version to v0.12.1 *(commit by [@actions-user](https://github.com/actions-user))*
+
+
 ## [v0.12.0] - 2024-08-06
 ### :boom: BREAKING CHANGES
 - due to [`5d3aaa8`](https://github.com/hashemuhammed/github-actions-practice/commit/5d3aaa89e08165c0d3d654ecea8ef084155f80ad) - update pipeline behavior *(commit by [@hashemuhammed](https://github.com/hashemuhammed))*:
@@ -88,3 +96,4 @@
 [v0.10.4]: https://github.com/hashemuhammed/github-actions-practice/compare/v0.10.3...v0.10.4
 [v0.11.0]: https://github.com/hashemuhammed/github-actions-practice/compare/v0.10.5...v0.11.0
 [v0.12.0]: https://github.com/hashemuhammed/github-actions-practice/compare/v0.11.0...v0.12.0
+[v0.12.1]: https://github.com/hashemuhammed/github-actions-practice/compare/v0.12.0...v0.12.1
