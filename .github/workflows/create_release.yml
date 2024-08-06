@@ -43,7 +43,7 @@ jobs:
           # Export new tag and changelog to environment
           echo "NEW_TAG=${new_tag}" >> $GITHUB_ENV
           echo "$changelog" > changelog.txt
- 
+
       - name: Update package.json with new version
         run: |
           if [ -z "${{ env.NEW_TAG }}" ]; then
@@ -61,26 +61,14 @@ jobs:
           git checkout -b release/${{ env.NEW_TAG }}
           git push origin release/${{ env.NEW_TAG }}
 
-      - name: Create new tag
+      - name: Update CHANGELOG.md manually
         run: |
-          git tag -a ${{ env.NEW_TAG }} -m "Release ${{ env.NEW_TAG }}"
-          git push origin ${{ env.NEW_TAG }}
-
-      - name: Conventional Changelog Action
-        id: changelog 
-        uses: requarks/changelog-action@v1
-        with:
-          token: ${{ github.token }}
-          tag: ${{ env.NEW_TAG }}
-
-      - name: Commit CHANGELOG.md
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          branch: release/${{ env.NEW_TAG }}
-          commit_message: 'docs: update CHANGELOG.md for Release ${{ env.NEW_TAG }} [skip ci]'
-          file_pattern: CHANGELOG.md
-
-
+          # Append the new changelog content to the top of CHANGELOG.md
+          { echo "$changelog"; echo; cat CHANGELOG.md; } > CHANGELOG.tmp
+          mv CHANGELOG.tmp CHANGELOG.md
+          git add CHANGELOG.md
+          git commit -m "docs: update CHANGELOG.md for Release ${{ env.NEW_TAG }} [skip ci]"
+          git push origin release/${{ env.NEW_TAG }}
 
       - name: Open pull request to master
         uses: devops-infra/action-pull-request@v0.5.5
@@ -108,4 +96,4 @@ jobs:
           target_branch: dev
           assignee: hashemuhammed 
           reviewer: hashemuhammed 
-          label: release 
+          label: release
