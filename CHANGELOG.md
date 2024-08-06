@@ -1,9 +1,10 @@
-# [17.6.0](https://github.com/hashemuhammed/github-actions-practice/compare/v17.5.1...v17.6.0) (2024-08-06)
+# [17.7.0](https://github.com/hashemuhammed/github-actions-practice/compare/v17.6.0...v17.7.0) (2024-08-06)
 
 
 ### Features
 
 * 17.5.1 ([313112b](https://github.com/hashemuhammed/github-actions-practice/commit/313112b11e8d3eb4127e81f4b8e3639f67474806))
+* should regenrate all ([0ef4cf8](https://github.com/hashemuhammed/github-actions-practice/commit/0ef4cf88c2d3289284a2501c7077d515a61ec834))
 
 
 
