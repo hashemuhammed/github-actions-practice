@@ -31,6 +31,8 @@ jobs:
           cat CHANGELOG.md >> CHANGELOG.tmp
           mv CHANGELOG.tmp CHANGELOG.md
 
+          echo "$changelog" 
+          
           echo "NEW_TAG=${new_tag}" >> $GITHUB_ENV
           echo "$changelog" > changelog.txt
 
