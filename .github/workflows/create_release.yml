@@ -108,4 +108,4 @@ jobs:
           target_branch: dev
           assignee: hashemuhammed 
           reviewer: hashemuhammed 
-          label: release
+          label: release 
