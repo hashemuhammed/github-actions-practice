@@ -1,4 +1,9 @@
-## [17.5.1](https://github.com/hashemuhammed/github-actions-practice/compare/v17.5.0...v17.5.1) (2024-08-06)
+# [17.6.0](https://github.com/hashemuhammed/github-actions-practice/compare/v17.5.1...v17.6.0) (2024-08-06)
+
+
+### Features
+
+* 17.5.1 ([313112b](https://github.com/hashemuhammed/github-actions-practice/commit/313112b11e8d3eb4127e81f4b8e3639f67474806))
 
 
 
