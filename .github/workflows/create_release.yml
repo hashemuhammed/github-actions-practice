@@ -20,7 +20,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           git-push: 'false'
           git-message: 'chore(release): {version}'  
-          release-count: '10'
+          release-count: '5'
 
       - name: Push new release branch
         run: |
