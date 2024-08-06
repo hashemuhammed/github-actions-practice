@@ -1,11 +1,7 @@
 name: Create Release Branch
 
 on:
-  workflow_dispatch:
-    inputs:
-      release_version:
-        description: 'Release version'
-        required: true
+  workflow_dispatch
 
 jobs:
   create-release:
@@ -22,6 +18,7 @@ jobs:
         with:
           owner: "hashem"
           ignorePreReleases: "true"
+          repo: "github-actions-practice"
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push new release branch
