@@ -31,7 +31,7 @@ jobs:
           new_tag=$(echo "$standard_version_output" | grep 'tagging release' | awk '{print $NF}')
           
           # Extract the changelog from the dry-run output
-          changelog=$(echo "$standard_version_output" | awk '/^---$/,/^---$/ { if (!/^---$/) print }')
+          changelog=$(echo "$standard_version_output" | sed -n '/^---$/,/^---$/p' | sed '1d;$d')
           
           # Log the latest tag, new tag, and changelog for debugging
           latest_tag=$(git tag -l | sort -V | tail -n 1)
