@@ -31,9 +31,16 @@ jobs:
  
       - name: Update package.json with new version
         run: |
-          npm version ${{ env.NEW_VERSION }} --no-git-tag-version
+          if [ -z "${{ env.NEW_TAG }}" ]; then
+            echo "No new version detected. Skipping package.json update."
+            exit 0
+          fi
+          # Remove leading 'v' from version string for package.json
+          new_version=$(echo "${{ env.NEW_TAG }}" | sed 's/^v//')
+          jq --arg version "$new_version" '.version = $version' package.json > package.json.tmp
+          mv package.json.tmp package.json
           git add package.json
-          git commit -m "chore: update version to ${{ env.NEW_VERSION }}"
+          git commit -m "chore: update version to ${{ env.NEW_TAG }}"
 
       - name: Create and push new release branch
         run: |
@@ -46,7 +53,7 @@ jobs:
           git push origin ${{ env.NEW_TAG }}
 
       - name: Conventional Changelog Action
-        id: changelog
+        id: changelog 
         uses: requarks/changelog-action@v1
         with:
           token: ${{ github.token }}
