@@ -24,7 +24,7 @@ jobs:
 
           # Extract tag name from commit message
           tag_name=$(echo "$commits" | awk -F'update CHANGELOG.md for release/' '{print $2}' | awk '{print $1}')
-          branch_name="release/$tag_name"  # Ensure the branch name is correctly prefixed
+          branch_name="release/$tag_name"  
 
           echo "Extracted tag name: $tag_name"
           echo "Extracted branch name: $branch_name"
@@ -32,6 +32,9 @@ jobs:
           # Check if the commit message contains the relevant pattern
           if echo "$commits" | grep -q "update CHANGELOG.md for release/"; then
             echo "Relevant commit found with tag name: $tag_name"
+            git fetch --tags
+            echo "Existing tags:"
+            git tag -l
 
             # Check if the tag already exists
             if git tag -l | grep -q "^$tag_name$"; then
