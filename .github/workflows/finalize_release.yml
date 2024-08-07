@@ -44,7 +44,7 @@ jobs:
               echo "No open PRs found"
               # Create and push the new tag
               git tag $tag_name
-              git push origin $tag_name
+              git push origin $tag_name 
 
               # Delete the release branch
               git push origin --delete $branch_name
