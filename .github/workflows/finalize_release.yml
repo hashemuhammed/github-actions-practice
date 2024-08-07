@@ -20,6 +20,7 @@ jobs:
         id: check_commits
         run: |
           commits=$(git log --pretty=format:"%s" HEAD^..HEAD)
+          echo "$commits"
           if echo "$commits" | grep -q "update CHANGELOG.md for Release"; then
             echo "Relevant commit found"
             echo "RELEVANT=true" >> $GITHUB_ENV
