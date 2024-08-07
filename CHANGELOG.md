@@ -1,5 +1,33 @@
 
 
+## [29.0.0](https://github.com/hashemuhammed/github-actions-practice/compare/v22.2.0...v29.0.0) (2024-08-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** skip on empty
+
+### Features
+
+* **api:** skip on empty ([d3a210c](https://github.com/hashemuhammed/github-actions-practice/commit/d3a210c60a3accdd34dec1cef8c4f8e1ca4d85ad))
+* Finalize Relase pipeline ([052cbc7](https://github.com/hashemuhammed/github-actions-practice/commit/052cbc70cd8e0840cee3e067213437dfc6f5ba8d))
+* pipeline updated ([88383c7](https://github.com/hashemuhammed/github-actions-practice/commit/88383c715466304334e0713bbe51e16efd609e3b))
+* space ([69aa879](https://github.com/hashemuhammed/github-actions-practice/commit/69aa879c690dde1e9ec59dcf7f891efbc16fb980))
+* updated pipeline ([d3710e6](https://github.com/hashemuhammed/github-actions-practice/commit/d3710e660f579dba82102b39c3128120cf82482c))
+* Updated pipeline ([f1caa76](https://github.com/hashemuhammed/github-actions-practice/commit/f1caa76e18de45d26c36e0b51f1018ae7a90899a))
+
+
+### Bug Fixes
+
+* identation ([c01f693](https://github.com/hashemuhammed/github-actions-practice/commit/c01f693d3591fa7a9038d1077a5b386d4327921d))
+* identation ([88ce0f3](https://github.com/hashemuhammed/github-actions-practice/commit/88ce0f3bc60aec2b109cf58cfdc4134f66605d04))
+* Removed condition ([e8faca0](https://github.com/hashemuhammed/github-actions-practice/commit/e8faca0e847a294a8e9d0ea626fd0b71d92ecddb))
+* removed reviewer ([45050b8](https://github.com/hashemuhammed/github-actions-practice/commit/45050b8f52a5f690f9d37ed18f5ba102c3b543f2))
+* syntax error ([525a163](https://github.com/hashemuhammed/github-actions-practice/commit/525a1632c0241512dc20248deff208536b26f0c9))
+* syntax error ([bff6a72](https://github.com/hashemuhammed/github-actions-practice/commit/bff6a72c61698bd6c60b86e794c48dc7946fc048))
+
+
+
 ## [28.0.0](https://github.com/hashemuhammed/github-actions-practice/compare/v22.2.0...v28.0.0) (2024-08-07)
 
 
