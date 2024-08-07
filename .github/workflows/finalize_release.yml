@@ -39,6 +39,8 @@ jobs:
               # List open PRs originating from the branch_name
               gh pr list --head "$branch_name" 
               open_prs=$(gh pr list --head "$branch_name" --state open --json number --jq '.[].number')
+              echo "Raw output from gh pr list: $open_prs"
+
               if [ -z "$open_prs" ]; then
                 echo "No open PRs from the branch $branch_name"
                 echo "HAS_OPEN_PRS=false" >> $GITHUB_ENV
