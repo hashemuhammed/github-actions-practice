@@ -19,8 +19,6 @@ jobs:
         run: |
           sudo apt-get install gh
 
-      # - name: Authenticate GitHub CLI
-      #   run: gh auth login --with-token < ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check for relevant commit message
         id: check_commits
@@ -33,13 +31,16 @@ jobs:
           branch_name=$(echo "$commits" | awk -F'release/' '{print $2}' | awk '{print $1}')
           echo "$branch_name"
           if echo "$commits" | grep -q "update CHANGELOG.md for release/"; then
-            if [ -n "$branch_name" ]; then
-              echo "Relevant commit found with branch name: $branch_name"
-              echo "RELEVANT=true" >> $GITHUB_ENV
-              echo "BRANCH_NAME=$branch_name" >> $GITHUB_ENV
+            echo "Relevant commit found with branch name: $branch_name"
+
+            open_prs=$(gh pr list --source $branch_name --state open --json number --jq '.[].number')
+            if [ -z "$open_prs" ]; then
+              echo "No open PRs from the branch $branch_name"
+              echo "HAS_OPEN_PRS=false" >> $GITHUB_ENV
             else
-              echo "Relevant commit found but no branch name extracted"
-              echo "RELEVANT=false" >> $GITHUB_ENV
+              echo "Open PRs from the branch $branch_name:"
+              echo "$open_prs"
+              echo "HAS_OPEN_PRS=true" >> $GITHUB_ENV
             fi
           else
             echo "No relevant commit found"
