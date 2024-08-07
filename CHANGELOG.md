@@ -1,5 +1,26 @@
 
 
+## [24.0.0](https://github.com/hashemuhammed/github-actions-practice/compare/v22.2.0...v24.0.0) (2024-08-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** skip on empty
+
+### Features
+
+* **api:** skip on empty ([d3a210c](https://github.com/hashemuhammed/github-actions-practice/commit/d3a210c60a3accdd34dec1cef8c4f8e1ca4d85ad))
+* Finalize Relase pipeline ([052cbc7](https://github.com/hashemuhammed/github-actions-practice/commit/052cbc70cd8e0840cee3e067213437dfc6f5ba8d))
+
+
+### Bug Fixes
+
+* Removed condition ([e8faca0](https://github.com/hashemuhammed/github-actions-practice/commit/e8faca0e847a294a8e9d0ea626fd0b71d92ecddb))
+* syntax error ([525a163](https://github.com/hashemuhammed/github-actions-practice/commit/525a1632c0241512dc20248deff208536b26f0c9))
+* syntax error ([bff6a72](https://github.com/hashemuhammed/github-actions-practice/commit/bff6a72c61698bd6c60b86e794c48dc7946fc048))
+
+
+
 ## [23.0.0](https://github.com/hashemuhammed/github-actions-practice/compare/v22.2.0...v23.0.0) (2024-08-07)
 
 
