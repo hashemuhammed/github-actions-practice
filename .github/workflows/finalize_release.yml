@@ -52,7 +52,7 @@ jobs:
               echo "Created and pushed new tag $tag_name, and deleted branch $branch_name"
             else
               echo "Open PRs found"
-            fi
+            fi 
           else
             echo "No relevant commit found"
           fi
