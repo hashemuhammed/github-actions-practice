@@ -1,5 +1,15 @@
 
 
+## [42.2.0](https://github.com/hashemuhammed/github-actions-practice/compare/v42.0.4...v42.2.0) (2024-08-07)
+
+
+### Features
+
+* open prs ([695120f](https://github.com/hashemuhammed/github-actions-practice/commit/695120fe0b211de1fbe9d637647b40df2ec29499))
+* open prs ([695da14](https://github.com/hashemuhammed/github-actions-practice/commit/695da14e2382a32fb4c706e7942463e263def138))
+
+
+
 ## [42.1.0](https://github.com/hashemuhammed/github-actions-practice/compare/v42.0.4...v42.1.0) (2024-08-07)
 
 
