@@ -1,5 +1,23 @@
 
 
+## [42.1.0](https://github.com/hashemuhammed/github-actions-practice/compare/v42.0.4...v42.1.0) (2024-08-07)
+
+
+### Features
+
+* open prs ([695da14](https://github.com/hashemuhammed/github-actions-practice/commit/695da14e2382a32fb4c706e7942463e263def138))
+
+
+
+### [42.0.4](https://github.com/hashemuhammed/github-actions-practice/compare/v24.2.0...v42.0.4) (2024-08-07)
+
+
+### Bug Fixes
+
+* branch name ([8ba6664](https://github.com/hashemuhammed/github-actions-practice/commit/8ba6664748b45307700e0fe2550b23ec959e0dce))
+
+
+
 ### [42.0.3](https://github.com/hashemuhammed/github-actions-practice/compare/v24.2.0...v42.0.3) (2024-08-07)
 
 
