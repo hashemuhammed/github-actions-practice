@@ -9,19 +9,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        # with:
-        #   fetch-depth: 0
+        with:
+          fetch-depth: 0
 
-      # - name: Set Git user info
-      #   run: |
-      #     git config --global user.email "actions@github.com"
-      #     git config --global user.name "GitHub Actions"
+      - name: Set Git user info
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
           
       - name: Install dependencies
         run: |
           npm install -g standard-version
  
-      - name: Update CHANGELOG.md manually
+      - name: Update CHANGELOG.md
         run: |
           standard_version_output=$(standard-version --dry-run)
           new_tag=$(echo "$standard_version_output" | grep 'tagging release' | awk '{print $NF}')
@@ -32,9 +32,7 @@ jobs:
           
           echo "NEW_TAG=${new_tag}" >> $GITHUB_ENV
 
-
-
-      - name: Update package.json with New Version
+      - name: Update package.json
         run: |
           if [ -z "${{ env.NEW_TAG }}" ]; then
             echo "No new version detected. Skipping package.json update."
