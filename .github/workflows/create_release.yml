@@ -43,6 +43,8 @@ jobs:
           mv package.json.tmp package.json
           git add package.json
           git commit -m "chore: update version to ${{ env.NEW_TAG }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_PAT }}
 
 
       - name: Create and push new release branch
@@ -55,7 +57,9 @@ jobs:
         run: |
           git add CHANGELOG.md
           git commit -m "docs: update CHANGELOG.md for Release ${{ env.NEW_TAG }} [skip ci]"
-          git push origin release/${{ env.NEW_TAG }} 
+          git push origin release/${{ env.NEW_TAG }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_PAT }}
 
 
       - name: Open pull request to master 
@@ -70,6 +74,8 @@ jobs:
           target_branch: main
           assignee: hashemuhammed
           label: release
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_PAT }}
 
       - name: Open pull request to dev
         uses: devops-infra/action-pull-request@v0.5.5
@@ -83,3 +89,5 @@ jobs:
           target_branch: dev
           assignee: hashemuhammed 
           label: release
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_PAT }}
