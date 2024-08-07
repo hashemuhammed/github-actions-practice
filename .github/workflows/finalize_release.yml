@@ -5,7 +5,7 @@ on:
       - closed
     branches:
       - main
-      - dev
+      - dev 
 jobs:
   finalize-release:
     runs-on: ubuntu-latest
