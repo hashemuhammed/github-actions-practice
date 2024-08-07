@@ -1,25 +1,36 @@
 name: Finalize Release
+
 on:
-  pull_request:
-    types:
-      - closed
+  push:
     branches:
       - main
       - dev
+
 jobs:
   finalize-release:
     runs-on: ubuntu-latest
     steps:
-      - name: Logging
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Determine if branch is a release branch
+        id: check_branch
         run: |
-          echo "Action: ${{ github.event.action }}"
-          echo "Merged: ${{ github.event.pull_request.merged }}"
-          echo "Branch name: ${{ github.event.pull_request.head.ref }}"
+          echo "$branch_name"
 
-      - name: Check if PR is merged and source branch is release/*
-        if: github.event.action == 'closed' && github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/')
+          branch_name=$(echo "${{ github.ref }}" | sed 's/refs\/heads\///')
+          
+          if [[ "$branch_name" == release/* ]]; then
+            echo "Branch is a release branch"
+            echo "IS_RELEASE_BRANCH=true" >> $GITHUB_ENV
+          else
+            echo "Not a release branch"
+            echo "IS_RELEASE_BRANCH=false" >> $GITHUB_ENV
+          fi
+
+      - name: Process Release Branch
+        if: env.IS_RELEASE_BRANCH == 'true'
         run: |
-          echo "PR is merged from a release branch"
-
-
- 
+          echo "Processing release branch..."
