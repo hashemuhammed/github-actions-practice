@@ -53,6 +53,9 @@ jobs:
               echo "No relevant commit found"
               echo "RELEVANT=false" >> $GITHUB_ENV
             fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+
 
       - name: Process relevant commits
         if: env.RELEVANT == 'true'
