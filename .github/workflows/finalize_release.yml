@@ -27,8 +27,8 @@ jobs:
         run: |
           commits=$(git log --pretty=format:"%s" HEAD^..HEAD)
           
-          echo "Commit messages:"
-          echo "$commits"
+          echo "branch name:"
+
 
           branch_name=$(echo "$commits" | awk -F'release/' '{print $2}' | awk '{print $1}')
           echo "$branch_name"
