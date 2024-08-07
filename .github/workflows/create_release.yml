@@ -21,7 +21,7 @@ jobs:
         run: |
           npm install -g standard-version
  
-      - name: Update CHANGELOG.md manually
+      - name: Update CHANGELOG.md
         run: |
           standard_version_output=$(standard-version --dry-run)
           new_tag=$(echo "$standard_version_output" | grep 'tagging release' | awk '{print $NF}')
@@ -32,9 +32,7 @@ jobs:
           
           echo "NEW_TAG=${new_tag}" >> $GITHUB_ENV
 
-
-
-      - name: Update package.json with New Version
+      - name: Update package.json
         run: |
           if [ -z "${{ env.NEW_TAG }}" ]; then
             echo "No new version detected. Skipping package.json update."
