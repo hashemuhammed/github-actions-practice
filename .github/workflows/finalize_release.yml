@@ -36,14 +36,12 @@ jobs:
           # Check if the commit message contains the relevant pattern
           if echo "$commits" | grep -q "update CHANGELOG.md for release/"; then
             echo "Relevant commit found with tag name: $tag_name"
+            gh pr list --head "$branch_name" --state open --json number --jq '.[].number'
             open_prs=$(gh pr list --head "$branch_name" --state open --json number --jq '.[].number')
 
             # Check if open prs
             if [ -z "$open_prs" ]; then
-              echo "There are open PRs"
-            else
               echo "No open PRs found"
-
               # Create and push the new tag
               git tag $tag_name
               git push origin $tag_name
@@ -52,6 +50,8 @@ jobs:
               git push origin --delete $branch_name
 
               echo "Created and pushed new tag $tag_name, and deleted branch $branch_name"
+            else
+              echo "Open PRs found"
             fi
           else
             echo "No relevant commit found"
