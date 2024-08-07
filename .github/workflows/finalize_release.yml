@@ -15,22 +15,22 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Determine if branch is a release branch
-        id: check_branch
-        run: |
-          echo "${{ github.ref }}"
 
-          branch_name=$(echo "${{ github.ref }}" | sed 's/refs\/heads\///')
-          
-          if [[ "$branch_name" == release/* ]]; then
-            echo "Branch is a release branch"
-            echo "IS_RELEASE_BRANCH=true" >> $GITHUB_ENV
+      - name: Check for relevant commit message
+        id: check_commits
+        run: |
+          commits=$(git log --pretty=format:"%s" HEAD^..HEAD)
+          if echo "$commits" | grep -q "update CHANGELOG.md for Release"; then
+            echo "Relevant commit found"
+            echo "RELEVANT=true" >> $GITHUB_ENV
           else
-            echo "Not a release branch"
-            echo "IS_RELEASE_BRANCH=false" >> $GITHUB_ENV
+            echo "No relevant commit found"
+            echo "RELEVANT=false" >> $GITHUB_ENV
           fi
 
-      - name: Process Release Branch
-        if: env.IS_RELEASE_BRANCH == 'true'
+      - name: Process relevant commits
+        if: env.RELEVANT == 'true'
         run: |
-          echo "Processing release branch..."
+          echo "Processing commits with relevant messages..."
+          # Add your processing logic here
+
