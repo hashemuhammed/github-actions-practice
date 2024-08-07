@@ -56,7 +56,7 @@ jobs:
       - name: Commit CHANGELOG.md 
         run: |
           git add CHANGELOG.md
-          git commit -m "docs: update CHANGELOG.md for Release ${{ env.NEW_TAG }} [skip ci]"
+          git commit -m "docs: update CHANGELOG.md for release/${{ env.NEW_TAG }} [skip ci]"
           git push origin release/${{ env.NEW_TAG }}
         env:
           GITHUB_TOKEN: ${{ secrets.MY_PAT }}
