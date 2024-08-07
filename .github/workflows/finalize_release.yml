@@ -15,15 +15,32 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install GitHub CLI
+        run: |
+          sudo apt-get install gh
+
+      # - name: Authenticate GitHub CLI
+      #   run: gh auth login --with-token < ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check for relevant commit message
         id: check_commits
         run: |
           commits=$(git log --pretty=format:"%s" HEAD^..HEAD)
-          echo "$commits"
-          if echo "$commits" | grep -q "update CHANGELOG.md for Release"; then
-            echo "Relevant commit found"
-            echo "RELEVANT=true" >> $GITHUB_ENV
+          
+          echo "branch name:"
+
+
+          branch_name=$(echo "$commits" | awk -F'release/' '{print $2}' | awk '{print $1}')
+          echo "$branch_name"
+          if echo "$commits" | grep -q "update CHANGELOG.md for release/"; then
+            if [ -n "$branch_name" ]; then
+              echo "Relevant commit found with branch name: $branch_name"
+              echo "RELEVANT=true" >> $GITHUB_ENV
+              echo "BRANCH_NAME=$branch_name" >> $GITHUB_ENV
+            else
+              echo "Relevant commit found but no branch name extracted"
+              echo "RELEVANT=false" >> $GITHUB_ENV
+            fi
           else
             echo "No relevant commit found"
             echo "RELEVANT=false" >> $GITHUB_ENV
