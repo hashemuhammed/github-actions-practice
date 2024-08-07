@@ -21,38 +21,38 @@ jobs:
 
 
       - name: Check for relevant commit message
-      id: check_commits
-      run: |
-        # Get commit messages
-          commits=$(git log --pretty=format:"%s" HEAD^..HEAD)
-          
-          # Print commit messages for debugging
-          echo "Commit messages:"
-          echo "$commits"
+        id: check_commits
+        run: |
+          # Get commit messages
+            commits=$(git log --pretty=format:"%s" HEAD^..HEAD)
+            
+            # Print commit messages for debugging
+            echo "Commit messages:"
+            echo "$commits"
 
-          # Extract branch name from commit message
-          branch_name=$(echo "$commits" | awk -F'release/' '{print $2}' | awk '{print $1}')
-          branch_name="release/$branch_name"  # Ensure the branch name is correctly prefixed
-          echo "Branch name: $branch_name"
+            # Extract branch name from commit message
+            branch_name=$(echo "$commits" | awk -F'release/' '{print $2}' | awk '{print $1}')
+            branch_name="release/$branch_name"  # Ensure the branch name is correctly prefixed
+            echo "Branch name: $branch_name"
 
-          # Check if the commit message contains the relevant pattern
-          if echo "$commits" | grep -q "update CHANGELOG.md for release/"; then
-            echo "Relevant commit found with branch name: $branch_name"
+            # Check if the commit message contains the relevant pattern
+            if echo "$commits" | grep -q "update CHANGELOG.md for release/"; then
+              echo "Relevant commit found with branch name: $branch_name"
 
-            # List open PRs originating from the branch_name
-            open_prs=$(gh pr list --head "$branch_name" --state open --json number --jq '.[].number')
-            if [ -z "$open_prs" ]; then
-              echo "No open PRs from the branch $branch_name"
-              echo "HAS_OPEN_PRS=false" >> $GITHUB_ENV
+              # List open PRs originating from the branch_name
+              open_prs=$(gh pr list --head "$branch_name" --state open --json number --jq '.[].number')
+              if [ -z "$open_prs" ]; then
+                echo "No open PRs from the branch $branch_name"
+                echo "HAS_OPEN_PRS=false" >> $GITHUB_ENV
+              else
+                echo "Open PRs from the branch $branch_name:"
+                echo "$open_prs"
+                echo "HAS_OPEN_PRS=true" >> $GITHUB_ENV
+              fi
             else
-              echo "Open PRs from the branch $branch_name:"
-              echo "$open_prs"
-              echo "HAS_OPEN_PRS=true" >> $GITHUB_ENV
+              echo "No relevant commit found"
+              echo "RELEVANT=false" >> $GITHUB_ENV
             fi
-          else
-            echo "No relevant commit found"
-            echo "RELEVANT=false" >> $GITHUB_ENV
-          fi
 
       - name: Process relevant commits
         if: env.RELEVANT == 'true'
