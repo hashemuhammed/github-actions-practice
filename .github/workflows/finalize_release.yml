@@ -1,15 +1,24 @@
 name: Finalize Release
 on:
   pull_request:
-    types: 
+    types:
       - closed
     branches:
       - main
-      - dev 
+      - dev
 jobs:
   finalize-release:
     runs-on: ubuntu-latest
     steps:
       - name: Logging
         run: |
-          echo "Event: ${{ toJson(github.event) }}"
+          echo "Action: ${{ github.event.action }}"
+          echo "Merged: ${{ github.event.pull_request.merged }}"
+          echo "Branch name: ${{ github.event.pull_request.head.ref }}"
+
+      - name: Check if PR is merged and source branch is release/*
+        if: github.event.action == 'closed' && github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/')
+        run: |
+          echo "PR is merged from a release branch"
+
+
