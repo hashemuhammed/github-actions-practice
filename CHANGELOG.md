@@ -1,5 +1,18 @@
 
 
+## [23.0.0](https://github.com/hashemuhammed/github-actions-practice/compare/v22.2.0...v23.0.0) (2024-08-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** skip on empty
+
+### Features
+
+* **api:** skip on empty ([d3a210c](https://github.com/hashemuhammed/github-actions-practice/commit/d3a210c60a3accdd34dec1cef8c4f8e1ca4d85ad))
+
+
+
 ## [22.2.0](https://github.com/hashemuhammed/github-actions-practice/compare/v22.1.1...v22.2.0) (2024-08-07)
 
 
