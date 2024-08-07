@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Logging
-       run: |
-        echo "Action: ${{ github.event.action }}"
-        echo "Merged: ${{ github.event.pull_request.merged }}"
-        echo "Branch name: ${{ github.event.pull_request.head.ref }}"
+        run: |
+          echo "Action: ${{ github.event.action }}"
+          echo "Merged: ${{ github.event.pull_request.merged }}"
+          echo "Branch name: ${{ github.event.pull_request.head.ref }}"
 
       - name: Check if PR is merged and source branch is release/*
         if: github.event.action == 'closed' && github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/')
