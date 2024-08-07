@@ -1,5 +1,20 @@
 
 
+## [22.2.0](https://github.com/hashemuhammed/github-actions-practice/compare/v22.1.1...v22.2.0) (2024-08-07)
+
+
+### Features
+
+* commented user info ([d34d776](https://github.com/hashemuhammed/github-actions-practice/commit/d34d776b011977a6f16212989f7a701073cb0f71))
+* testing new release ([e710499](https://github.com/hashemuhammed/github-actions-practice/commit/e710499b7273af1ac4b77016840af901299ce343))
+
+
+### Bug Fixes
+
+* commented fetch depth ([509606d](https://github.com/hashemuhammed/github-actions-practice/commit/509606d73ab31063344b330d232f7b725297a785))
+
+
+
 ### [22.1.1](https://github.com/hashemuhammed/github-actions-practice/compare/v22.1.0...v22.1.1) (2024-08-06)
 
 
