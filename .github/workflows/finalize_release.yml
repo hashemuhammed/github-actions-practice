@@ -25,10 +25,7 @@ jobs:
         run: |
           # Get commit messages
             commits=$(git log --pretty=format:"%s" HEAD^..HEAD)
-            
-            # Print commit messages for debugging
-            echo "Commit messages:"
-            echo "$commits"
+        
 
             # Extract branch name from commit message
             branch_name=$(echo "$commits" | awk -F'release/' '{print $2}' | awk '{print $1}')
@@ -40,6 +37,7 @@ jobs:
               echo "Relevant commit found with branch name: $branch_name"
 
               # List open PRs originating from the branch_name
+              echo "gh pr list --head "$branch_name" --state open --json number --jq"
               open_prs=$(gh pr list --head "$branch_name" --state open --json number --jq '.[].number')
               if [ -z "$open_prs" ]; then
                 echo "No open PRs from the branch $branch_name"
