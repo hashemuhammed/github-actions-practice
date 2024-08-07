@@ -19,8 +19,8 @@ jobs:
         run: |
           sudo apt-get install gh
 
-      - name: Authenticate GitHub CLI
-        run: gh auth login --with-token < ${{ secrets.GITHUB_TOKEN }}
+      # - name: Authenticate GitHub CLI
+      #   run: gh auth login --with-token < ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check for relevant commit message
         id: check_commits
