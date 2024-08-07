@@ -21,20 +21,21 @@ jobs:
           commits=$(git log --pretty=format:"%s" HEAD^..HEAD)
           echo "Commit messages: $commits"
 
-          # Extract tag name from commit message
-          tag_name=$(echo "$commits" | grep -oP '(?<=update CHANGELOG.md for release/)[^\s\[\]]+')
-          branch_name="release/$tag_name"  
-
-          echo "Extracted tag name: $tag_name"
-          echo "Extracted branch name: $branch_name"
-
           # Check if the commit message contains the relevant pattern
           if echo "$commits" | grep -q "update CHANGELOG.md for release/"; then
             echo "Relevant commit found with tag name: $tag_name"
-              # Create and push the new tag
-              git tag $tag_name
-              git push origin $tag_name 
-              echo "Created and pushed new tag $tag_name"
+
+            # Extract tag name from commit message
+            tag_name=$(echo "$commits" | grep -oP '(?<=update CHANGELOG.md for release/)[^\s\[\]]+')
+            branch_name="release/$tag_name"  
+
+            echo "Extracted tag name: $tag_name"
+            echo "Extracted branch name: $branch_name"
+            
+            # Create and push the new tag
+            git tag $tag_name
+            git push origin $tag_name 
+            echo "Created and pushed new tag $tag_name"
           else
             echo "No relevant commit found"
           fi
