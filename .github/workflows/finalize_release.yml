@@ -41,10 +41,7 @@ jobs:
 
             # Check if open prs
             if [ -z "$open_prs" ]; then
-              echo "There are open PRs"
-            else
               echo "No open PRs found"
-
               # Create and push the new tag
               git tag $tag_name
               git push origin $tag_name
@@ -53,6 +50,8 @@ jobs:
               git push origin --delete $branch_name
 
               echo "Created and pushed new tag $tag_name, and deleted branch $branch_name"
+            else
+              echo "Open PRs found"
             fi
           else
             echo "No relevant commit found"
