@@ -69,7 +69,6 @@ jobs:
           source_branch: release/${{ env.NEW_TAG }}
           target_branch: main
           assignee: hashemuhammed
-          reviewer: hashemuhammed
           label: release
 
       - name: Open pull request to dev
@@ -83,5 +82,4 @@ jobs:
           source_branch: release/${{ env.NEW_TAG }}
           target_branch: dev
           assignee: hashemuhammed 
-          reviewer: hashemuhammed 
           label: release
