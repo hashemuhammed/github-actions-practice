@@ -1,5 +1,50 @@
 
 
+## [42.0.0](https://github.com/hashemuhammed/github-actions-practice/compare/v22.2.0...v42.0.0) (2024-08-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** skip on empty
+
+### Features
+
+* added the pat everywhere ([21d00f0](https://github.com/hashemuhammed/github-actions-practice/commit/21d00f0375b841d35017ba0e6f8ca8cd69476c61))
+* **api:** skip on empty ([d3a210c](https://github.com/hashemuhammed/github-actions-practice/commit/d3a210c60a3accdd34dec1cef8c4f8e1ca4d85ad))
+* auto merge ([6c891ce](https://github.com/hashemuhammed/github-actions-practice/commit/6c891ced82d0f314c9981af3801672d166de44e3))
+* Finalize Relase pipeline ([052cbc7](https://github.com/hashemuhammed/github-actions-practice/commit/052cbc70cd8e0840cee3e067213437dfc6f5ba8d))
+* pipeline updated ([88383c7](https://github.com/hashemuhammed/github-actions-practice/commit/88383c715466304334e0713bbe51e16efd609e3b))
+* space ([69aa879](https://github.com/hashemuhammed/github-actions-practice/commit/69aa879c690dde1e9ec59dcf7f891efbc16fb980))
+* test branch name ([ca1a0af](https://github.com/hashemuhammed/github-actions-practice/commit/ca1a0af69210e07a259f9b0b2b948096a2a54e22))
+* testing the new token ([7f889a9](https://github.com/hashemuhammed/github-actions-practice/commit/7f889a99807b283b0c8bb131737a9979c162dff2))
+* updated pipeline ([d3710e6](https://github.com/hashemuhammed/github-actions-practice/commit/d3710e660f579dba82102b39c3128120cf82482c))
+* Updated pipeline ([f1caa76](https://github.com/hashemuhammed/github-actions-practice/commit/f1caa76e18de45d26c36e0b51f1018ae7a90899a))
+* updated token to pat ([0864c3d](https://github.com/hashemuhammed/github-actions-practice/commit/0864c3d8b7068c0893f6c461d0bd23a849422caa))
+
+
+### Bug Fixes
+
+* branch name ([3403bfd](https://github.com/hashemuhammed/github-actions-practice/commit/3403bfd3903445bde09d868fdbb24fe231ef5752))
+* commented auth ([9d82af9](https://github.com/hashemuhammed/github-actions-practice/commit/9d82af93c8e95e3913a1ebbcfd59c50c39872dc0))
+* ficed head ([0bab76e](https://github.com/hashemuhammed/github-actions-practice/commit/0bab76e758c5b6e7d85fc4238d9f71309c208417))
+* id ([86fa51e](https://github.com/hashemuhammed/github-actions-practice/commit/86fa51e4285a590b789961d1b137541200a93f4b))
+* id ([8743c42](https://github.com/hashemuhammed/github-actions-practice/commit/8743c420b3f0d4049d1a1378dd48904a01e6419b))
+* id ([cb9fd3c](https://github.com/hashemuhammed/github-actions-practice/commit/cb9fd3c0e6dd3fee59edb560fe5c6b9d6feaad86))
+* id ([a4e7d63](https://github.com/hashemuhammed/github-actions-practice/commit/a4e7d63b577918a2829ade9a35b43adec1452b6f))
+* identation ([c01f693](https://github.com/hashemuhammed/github-actions-practice/commit/c01f693d3591fa7a9038d1077a5b386d4327921d))
+* identation ([88ce0f3](https://github.com/hashemuhammed/github-actions-practice/commit/88ce0f3bc60aec2b109cf58cfdc4134f66605d04))
+* Removed condition ([e8faca0](https://github.com/hashemuhammed/github-actions-practice/commit/e8faca0e847a294a8e9d0ea626fd0b71d92ecddb))
+* removed reviewer ([45050b8](https://github.com/hashemuhammed/github-actions-practice/commit/45050b8f52a5f690f9d37ed18f5ba102c3b543f2))
+* syntax error ([525a163](https://github.com/hashemuhammed/github-actions-practice/commit/525a1632c0241512dc20248deff208536b26f0c9))
+* syntax error ([bff6a72](https://github.com/hashemuhammed/github-actions-practice/commit/bff6a72c61698bd6c60b86e794c48dc7946fc048))
+* test ([3a8f34b](https://github.com/hashemuhammed/github-actions-practice/commit/3a8f34bbac0700de6c936dd7b447a136e4842449))
+* update branch name ([3579f1f](https://github.com/hashemuhammed/github-actions-practice/commit/3579f1ff03416105ab261d249206d0b94eea30dc))
+* updated finalize release ([4f2c08a](https://github.com/hashemuhammed/github-actions-practice/commit/4f2c08a3f8344b35e47451dadbb8246ddda5c111))
+* updated pipeline ([4232852](https://github.com/hashemuhammed/github-actions-practice/commit/42328521f8b0a5cd01088b6acce42173f6698da0))
+* updated pipeline ([bc237ca](https://github.com/hashemuhammed/github-actions-practice/commit/bc237cad23e71ede344f80a2f7b93c0d07249cbb))
+
+
+
 ## [41.0.0](https://github.com/hashemuhammed/github-actions-practice/compare/v22.2.0...v41.0.0) (2024-08-07)
 
 
