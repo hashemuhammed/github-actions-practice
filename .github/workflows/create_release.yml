@@ -61,7 +61,7 @@ jobs:
       - name: Open pull request to master 
         uses: devops-infra/action-pull-request@v0.5.5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.MY_PAT }}
           title: "Release ${{ env.NEW_TAG }}"
           body: |
             Hi!
@@ -74,7 +74,7 @@ jobs:
       - name: Open pull request to dev
         uses: devops-infra/action-pull-request@v0.5.5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.MY_PAT }}
           title: "Changelog ${{ env.NEW_TAG }}"
           body: |
             Hi!
