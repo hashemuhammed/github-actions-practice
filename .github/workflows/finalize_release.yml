@@ -36,6 +36,7 @@ jobs:
           # Check if the commit message contains the relevant pattern
           if echo "$commits" | grep -q "update CHANGELOG.md for release/"; then
             echo "Relevant commit found with tag name: $tag_name"
+            gh pr list --head "$branch_name" --state open --json number --jq '.[].number'
             open_prs=$(gh pr list --head "$branch_name" --state open --json number --jq '.[].number')
 
             # Check if open prs
