@@ -1,5 +1,14 @@
 
 
+### [42.0.4](https://github.com/hashemuhammed/github-actions-practice/compare/v24.2.0...v42.0.4) (2024-08-07)
+
+
+### Bug Fixes
+
+* branch name ([8ba6664](https://github.com/hashemuhammed/github-actions-practice/commit/8ba6664748b45307700e0fe2550b23ec959e0dce))
+
+
+
 ### [42.0.3](https://github.com/hashemuhammed/github-actions-practice/compare/v24.2.0...v42.0.3) (2024-08-07)
 
 
