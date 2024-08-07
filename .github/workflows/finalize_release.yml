@@ -30,7 +30,7 @@ jobs:
           echo "branch name:"
 
 
-          branch_name=$(echo "$commits" | awk -F'release/' '{print $2}' | awk '{print $1}')
+          branch_name=$(echo "$commits" | awk -F'release/' '{print $2}' | awk '{print "release/" $1}')
           echo "$branch_name"
           if echo "$commits" | grep -q "update CHANGELOG.md for release/"; then
             if [ -n "$branch_name" ]; then
