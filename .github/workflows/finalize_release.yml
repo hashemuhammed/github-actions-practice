@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - dev
 
 jobs:
   finalize-release:
@@ -14,10 +13,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-
-      - name: Install GitHub CLI
-        run: |
-          sudo apt-get install gh
 
       - name: Check for relevant commit message and manage tags and branches
         id: check_and_manage
@@ -36,26 +31,12 @@ jobs:
           # Check if the commit message contains the relevant pattern
           if echo "$commits" | grep -q "update CHANGELOG.md for release/"; then
             echo "Relevant commit found with tag name: $tag_name"
-            gh pr list --head "$branch_name" --state open --json number --jq '.[].number'
-            open_prs=$(gh pr list --head "$branch_name" --state open --json number --jq '.[].number')
-
-            # Check if open prs
-            if [ -z "$open_prs" ]; then
-              echo "No open PRs found"
               # Create and push the new tag
               git tag $tag_name
               git push origin $tag_name 
-
-              # Delete the release branch
-              git push origin --delete $branch_name
-
-              echo "Created and pushed new tag $tag_name, and deleted branch $branch_name"
-            else
-              echo "Open PRs found"
-            fi 
+              echo "Created and pushed new tag $tag_name"
           else
             echo "No relevant commit found"
           fi
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
