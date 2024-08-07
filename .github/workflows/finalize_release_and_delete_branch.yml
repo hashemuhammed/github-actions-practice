@@ -1,0 +1,61 @@
+# name: Finalize Release
+
+# on:
+#   push:
+#     branches:
+#       - main
+#       - dev
+
+# jobs:
+#   finalize-release:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v2
+#         with:
+#           fetch-depth: 0
+
+#       - name: Install GitHub CLI
+#         run: |
+#           sudo apt-get install gh
+
+#       - name: Check for relevant commit message and manage tags and branches
+#         id: check_and_manage
+#         run: |
+#           # Get commit messages
+#           commits=$(git log --pretty=format:"%s" HEAD^..HEAD)
+#           echo "Commit messages: $commits"
+
+#           # Extract tag name from commit message
+#           tag_name=$(echo "$commits" | grep -oP '(?<=update CHANGELOG.md for release/)[^\s\[\]]+')
+#           branch_name="release/$tag_name"  
+
+#           echo "Extracted tag name: $tag_name"
+#           echo "Extracted branch name: $branch_name"
+
+#           # Check if the commit message contains the relevant pattern
+#           if echo "$commits" | grep -q "update CHANGELOG.md for release/"; then
+#             echo "Relevant commit found with tag name: $tag_name"
+#             gh pr list --head "$branch_name" --state open --json number --jq '.[].number'
+#             open_prs=$(gh pr list --head "$branch_name" --state open --json number --jq '.[].number')
+
+#             # Check if open prs
+#             if [ -z "$open_prs" ]; then
+#               echo "No open PRs found"
+#               # Create and push the new tag
+#               git tag $tag_name
+#               git push origin $tag_name 
+
+#               # Delete the release branch
+#               git push origin --delete $branch_name
+
+#               echo "Created and pushed new tag $tag_name, and deleted branch $branch_name"
+#             else
+#               echo "Open PRs found"
+#             fi 
+#           else
+#             echo "No relevant commit found"
+#           fi
+#         env:
+#           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
