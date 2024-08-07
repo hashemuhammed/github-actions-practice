@@ -1,25 +1,37 @@
 name: Finalize Release
+
 on:
-  pull_request:
-    types:
-      - closed
+  push:
     branches:
       - main
       - dev
+
 jobs:
   finalize-release:
     runs-on: ubuntu-latest
     steps:
-      - name: Logging
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+
+      - name: Check for relevant commit message
+        id: check_commits
         run: |
-          echo "Action: ${{ github.event.action }}"
-          echo "Merged: ${{ github.event.pull_request.merged }}"
-          echo "Branch name: ${{ github.event.pull_request.head.ref }}"
+          commits=$(git log --pretty=format:"%s" HEAD^..HEAD)
+          echo "$commits"
+          if echo "$commits" | grep -q "update CHANGELOG.md for Release"; then
+            echo "Relevant commit found"
+            echo "RELEVANT=true" >> $GITHUB_ENV
+          else
+            echo "No relevant commit found"
+            echo "RELEVANT=false" >> $GITHUB_ENV
+          fi
 
-      - name: Check if PR is merged and source branch is release/*
-        if: github.event.action == 'closed' && github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/')
+      - name: Process relevant commits
+        if: env.RELEVANT == 'true'
         run: |
-          echo "PR is merged from a release branch"
+          echo "Processing commits with relevant messages..."
+          # Add your processing logic here
 
-
- 
