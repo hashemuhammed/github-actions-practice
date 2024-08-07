@@ -54,7 +54,7 @@ jobs:
               echo "RELEVANT=false" >> $GITHUB_ENV
             fi
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
       - name: Process relevant commits
