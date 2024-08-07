@@ -23,7 +23,7 @@ jobs:
           echo "Commit messages: $commits"
 
           # Extract tag name from commit message
-          tag_name=$(echo "$commits" | awk -F'update CHANGELOG.md for release/' '{print $2}' | awk '{print $1}')
+          tag_name=$(echo "$commits" | grep -oP '(?<=update CHANGELOG.md for release/)[^\s\[\]]+')
           branch_name="release/$tag_name"  
 
           echo "Extracted tag name: $tag_name"
