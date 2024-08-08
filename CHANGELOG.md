@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [42.7.2](https://github.com/hashemuhammed/github-actions-practice/compare/v42.7.1...v42.7.2) (2024-08-08)
+
 ### [42.7.1](https://github.com/hashemuhammed/github-actions-practice/compare/v42.7.0...v42.7.1) (2024-08-08)
 
 ## [42.7.0](https://github.com/hashemuhammed/github-actions-practice/compare/v42.6.0...v42.7.0) (2024-08-08)
