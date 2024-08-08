@@ -22,11 +22,11 @@ jobs:
           echo "Commit messages: $commits"
 
           # Check if the commit message contains the Release pattern
-          if echo "$commits" | grep -q "release/"; then
+          if echo "$commits" | grep -q "^release/"; then
             echo "Release commit found with tag name: $tag_name"
 
             # Extract tag name from commit message
-            tag_name=$(echo "$commits" | grep -oP '(?<=release/)[^\s\[\]]+')
+            tag_name=$(echo "$commits" | grep -oP '^release/\K[^\s\[\]]+')
             branch_name="release/$tag_name"  
 
             echo "Extracted tag name: $tag_name"
