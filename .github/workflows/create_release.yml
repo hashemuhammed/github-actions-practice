@@ -7,15 +7,15 @@ jobs:
   create-release:
     runs-on: [ubuntu-latest]
     container:
-      image: node:18-alpine 
- 
+      image: node:18-alpine
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-
+      - name: Install git
+        run: apk add --no-cache git
       - name: Set Git user info
         run: |
           git config --global user.email "actions@github.com"
