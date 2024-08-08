@@ -28,9 +28,8 @@ jobs:
           changelog=$(echo "$standard_version_output" | sed -n '/^---$/,/^---$/p' | sed '1d;$d')
 
           echo -e "\n\n$changelog\n\n$(cat CHANGELOG.md)" > CHANGELOG.tmp
+          awk '/^## \[/{count++} count <= 10' CHANGELOG.tmp > CHANGELOG.md
 
-          # Extract the latest 10 versions
-          awk '/^## \[/{count++} count > 10' CHANGELOG.tmp > CHANGELOG.md
           
           echo "NEW_TAG=${new_tag}" >> $GITHUB_ENV
       
