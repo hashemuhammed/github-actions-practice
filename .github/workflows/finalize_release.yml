@@ -28,11 +28,11 @@ jobs:
             # Extract tag name from commit message
             tag_name=$(echo "$commits" | grep -oP '^release/\K[^\s\[\]]+')
             branch_name="release/$tag_name"  
-
+ 
             echo "Extracted tag name: $tag_name"
             echo "Extracted branch name: $branch_name"
 
-            # Create and push the new tag
+            # Create and push the new tag 
             git tag $tag_name
             git push origin $tag_name 
             echo "Created and pushed new tag $tag_name"

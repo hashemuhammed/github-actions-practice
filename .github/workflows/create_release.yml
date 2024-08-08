@@ -28,8 +28,16 @@ jobs:
           changelog=$(echo "$standard_version_output" | sed -n '/^---$/,/^---$/p' | sed '1d;$d')
 
           echo -e "\n\n$changelog\n\n$(cat CHANGELOG.md)" > CHANGELOG.tmp
-          mv CHANGELOG.tmp CHANGELOG.md
-          
+
+          awk '
+            BEGIN { RS=""; FS="\n" }
+            /^## \[v[0-9]+\.[0-9]+\.[0-9]+\]/ { 
+                version_count++
+                if (version_count > 5) exit
+            }
+            { print $0 "\n---" }
+          ' CHANGELOG.tmp > CHANGELOG.md 
+
           echo "NEW_TAG=${new_tag}" >> $GITHUB_ENV
       
       - name: Create and push new release branch
