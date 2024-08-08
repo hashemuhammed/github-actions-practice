@@ -1,5 +1,16 @@
 
 
+### [42.5.1](https://github.com/hashemuhammed/github-actions-practice/compare/v42.5.0...v42.5.1) (2024-08-08)
+
+
+### Bug Fixes
+
+* synrax error ([b3b97ee](https://github.com/hashemuhammed/github-actions-practice/commit/b3b97ee09c3fd7fde3d83f8178e8a707bf830833))
+* updated commit msg ([83a7d90](https://github.com/hashemuhammed/github-actions-practice/commit/83a7d90b74e84bb5d63fc9b1e5c8dc366fbeb74c))
+* updated commit msg ([0fcd12d](https://github.com/hashemuhammed/github-actions-practice/commit/0fcd12d3b1782156acc8ae3907591c4590606f15))
+
+
+
 ## [42.5.0](https://github.com/hashemuhammed/github-actions-practice/compare/v42.4.0...v42.5.0) (2024-08-07)
 
 
