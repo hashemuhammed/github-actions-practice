@@ -7,11 +7,8 @@ jobs:
   create-release:
     runs-on: [ubuntu-latest]
     container:
-      #  image: imgdevops/infra:sta
-      image: ghcr.io/trufla-technology/deploy-infra-prod/production:cef56f1b4cf94d63c101e722cdbd7ea3d1245c38
-      credentials:
-        username: ${{ github.actor }}
-        password: ${{ secrets.LOGIN_TOKEN }}
+      image: node:18-alpine 
+ 
 
     steps:
       - name: Checkout repository
