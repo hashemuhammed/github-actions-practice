@@ -28,10 +28,9 @@ jobs:
           changelog=$(echo "$standard_version_output" | sed -n '/^---$/,/^---$/p' | sed '1d;$d')
 
           echo -e "\n\n$changelog\n\n$(cat CHANGELOG.md)" > CHANGELOG.tmp
-          sed '/^---$/d' CHANGELOG.tmp > CLEANED_CHANGELOG.tmp
 
           awk '/^## \[/{count++} count < 4' CHANGELOG.tmp > CHANGELOG.md
-
+          sed -i 's/^---$/ /' CHANGELOG.md
           
           echo "NEW_TAG=${new_tag}" >> $GITHUB_ENV
       
