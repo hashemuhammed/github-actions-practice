@@ -29,15 +29,9 @@ jobs:
 
           echo -e "\n\n$changelog\n\n$(cat CHANGELOG.md)" > CHANGELOG.tmp
 
-          awk '
-            BEGIN { RS=""; FS="\n" }
-            /^## \[v[0-9]+\.[0-9]+\.[0-9]+\]/ { 
-                version_count++
-                if (version_count > 5) exit
-            }
-            { print $0 "\n---" }
-          ' CHANGELOG.tmp > CHANGELOG.md 
-
+          # Extract the latest 10 versions
+          awk '/^## \[/{count++} count > 10' CHANGELOG.tmp > CHANGELOG.md
+          
           echo "NEW_TAG=${new_tag}" >> $GITHUB_ENV
       
       - name: Create and push new release branch
