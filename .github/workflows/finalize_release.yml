@@ -8,8 +8,6 @@ on:
 jobs:
   finalize-release:
     runs-on: ubuntu-latest
-    env:
-      - RELEASE_COMMIT_MESSAGE : "release/"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -24,11 +22,11 @@ jobs:
           echo "Commit messages: $commits"
 
           # Check if the commit message contains the Release pattern
-          if echo "$commits" | grep -q "$RELEASE_COMMIT_MESSAGE"; then
+          if echo "$commits" | grep -q "release/"; then
             echo "Release commit found with tag name: $tag_name"
 
             # Extract tag name from commit message
-            tag_name=$(echo "$commits" | grep -oP '(?<=${RELEASE_COMMIT_MESSAGE})[^\s\[\]]+')
+            tag_name=$(echo "$commits" | grep -oP '(?<=release/)[^\s\[\]]+')
             branch_name="release/$tag_name"  
 
             echo "Extracted tag name: $tag_name"
