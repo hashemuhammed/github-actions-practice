@@ -5,7 +5,14 @@ on:
 
 jobs:
   create-release:
-    runs-on: ubuntu-latest
+    runs-on: [prod-runner]
+    container:
+      #  image: imgdevops/infra:sta
+      image: ghcr.io/trufla-technology/deploy-infra-prod/production:cef56f1b4cf94d63c101e722cdbd7ea3d1245c38
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.LOGIN_TOKEN }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -16,24 +23,26 @@ jobs:
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
-          
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
       - name: Install dependencies
         run: |
           npm install -g standard-version
-      
+
       - name: Update CHANGELOG.md
         run: |
           standard_version_output=$(standard-version --dry-run)
           new_tag=$(echo "$standard_version_output" | grep 'tagging release' | awk '{print $NF}')
           changelog=$(echo "$standard_version_output" | sed -n '/^---$/,/^---$/p' | sed '1d;$d')
-
           echo -e "\n\n$changelog\n\n$(cat CHANGELOG.md)" > CHANGELOG.tmp
-
           awk '/^## \[/{count++} count < 4' CHANGELOG.tmp > CHANGELOG.md
-          sed -i 's/^---$/ /' CHANGELOG.md
-          
+          sed -i 's/^---$/ /' CHANGELOG.md      
           echo "NEW_TAG=${new_tag}" >> $GITHUB_ENV
-      
+
       - name: Create and push new release branch
         run: |
           git checkout -b release/${{ env.NEW_TAG }}
@@ -51,17 +60,13 @@ jobs:
           git add package.json
           git commit -m "chore: update version to ${{ env.NEW_TAG }}"
 
-
-
-      - name: Commit CHANGELOG.md 
+      - name: Commit CHANGELOG.md
         run: |
           git add CHANGELOG.md
           git commit -m "release/${{ env.NEW_TAG }}"
           git push origin release/${{ env.NEW_TAG }}
 
-
-
-      - name: Open pull request to master 
+      - name: Open pull request to master
         uses: devops-infra/action-pull-request@v0.5.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -72,8 +77,8 @@ jobs:
           source_branch: release/${{ env.NEW_TAG }}
           target_branch: main
           assignee: hashemuhammed
+          reviewer: hashemuhammed
           label: release
-
 
       - name: Open pull request to dev
         uses: devops-infra/action-pull-request@v0.5.5
@@ -85,7 +90,6 @@ jobs:
             This PR is for updating changelog for release ${{ env.NEW_TAG }} to be merged with dev.
           source_branch: release/${{ env.NEW_TAG }}
           target_branch: dev
-          assignee: hashemuhammed 
+          assignee: hashemuhammed
+          reviewer: hashemuhammed
           label: release
-
-      

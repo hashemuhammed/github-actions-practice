@@ -28,7 +28,7 @@ jobs:
             # Extract tag name from commit message
             tag_name=$(echo "$commits" | grep -oP '^release/\K[^\s\[\]]+')
             branch_name="release/$tag_name"  
- 
+
             echo "Extracted tag name: $tag_name"
             echo "Extracted branch name: $branch_name"
 
@@ -39,5 +39,3 @@ jobs:
           else
             echo "No Release commit found"
           fi
-
-
