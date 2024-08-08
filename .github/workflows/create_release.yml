@@ -15,10 +15,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set Git user info
-        run: |
-          git config --system user.email "actions@github.com"
-          git config --system user.name "GitHub Actions"
+      # - name: Set Git user info
+      #   run: |
+      #     git config --system user.email "actions@github.com"
+      #     git config --system user.name "GitHub Actions"
 
 
 
@@ -28,6 +28,8 @@ jobs:
 
       - name: Update CHANGELOG.md
         run: |
+          git config --system user.email "actions@github.com"
+          git config --system user.name "GitHub Actions"
           standard_version_output=$(standard-version --dry-run)
           new_tag=$(echo "$standard_version_output" | grep 'tagging release' | awk '{print $NF}')
           changelog=$(echo "$standard_version_output" | sed -n '/^---$/,/^---$/p' | sed '1d;$d')
