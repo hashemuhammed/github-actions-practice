@@ -23,8 +23,9 @@ jobs:
 
       - name: Install dependencies
         run: |
+          sudo apt-get update -y
+          sudo apt-get install -y jq
           npm install -g standard-version
-          apt-get install jq
 
       - name: Update CHANGELOG.md
         run: |
