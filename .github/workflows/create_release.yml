@@ -21,11 +21,10 @@ jobs:
           git config --system user.name "GitHub Actions"
           git config --system --add safe.directory '*'
 
-
-
       - name: Install dependencies
         run: |
           npm install -g standard-version
+          apt-get install jq
 
       - name: Update CHANGELOG.md
         run: |
