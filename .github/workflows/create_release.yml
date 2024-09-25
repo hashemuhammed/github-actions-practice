@@ -6,8 +6,6 @@ on:
 jobs:
   create-release:
     runs-on: [ubuntu-latest]
-    container:
-      image: node:18-buster
 
     steps:
       - name: Checkout repository
@@ -20,6 +18,11 @@ jobs:
           git config --system user.email "actions@github.com"
           git config --system user.name "GitHub Actions"
           git config --system --add safe.directory '*'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
 
       - name: Install dependencies
         run: |
@@ -34,7 +37,8 @@ jobs:
           changelog=$(echo "$standard_version_output" | sed -n '/^---$/,/^---$/p' | sed '1d;$d')
           echo -e "\n\n$changelog\n\n$(cat CHANGELOG.md)" > CHANGELOG.tmp
           awk '/^## \[/{count++} count < 4' CHANGELOG.tmp > CHANGELOG.md
-          sed -i 's/^---$/ /' CHANGELOG.md      
+          sed -i 's/^---$/ /' CHANGELOG.md    
+          sed -i '/^-e.*/d' CHANGELOG.md
           echo "NEW_TAG=${new_tag}" >> $GITHUB_ENV
 
       - name: Create and push new release branch
@@ -57,7 +61,7 @@ jobs:
       - name: Commit CHANGELOG.md
         run: |
           git add CHANGELOG.md
-          git commit -m "release/${{ env.NEW_TAG }}"
+          git commit -m "release: ${{ env.NEW_TAG }}"
           git push origin release/${{ env.NEW_TAG }}
 
       - name: Open pull request to master
@@ -70,8 +74,6 @@ jobs:
             This PR is for a new release ${{ env.NEW_TAG }} to be merged with master.
           source_branch: release/${{ env.NEW_TAG }}
           target_branch: main
-          assignee: hashemuhammed
-          reviewer: hashemuhammed
           label: release
 
       - name: Open pull request to dev
@@ -84,6 +86,4 @@ jobs:
             This PR is for updating changelog for release ${{ env.NEW_TAG }} to be merged with dev.
           source_branch: release/${{ env.NEW_TAG }}
           target_branch: dev
-          assignee: hashemuhammed
-          reviewer: hashemuhammed
           label: release

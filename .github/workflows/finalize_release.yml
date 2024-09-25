@@ -3,36 +3,40 @@ name: Finalize Release
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   finalize-release:
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest]
+
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          fetch-depth: 0'
 
-      - name: Check for Release commit message and manage tags and branches
+      - name: Set Git user info
+        run: |
+          git config --system user.email "actions@github.com"
+          git config --system user.name "GitHub Actions"
+          git config --system --add safe.directory '*'
+
+      - name: Check for Release Commit Message and Create Tag
         id: check_and_manage
         run: |
-          # Get commit messages
           commits=$(git log --pretty=format:"%s" HEAD^..HEAD)
           echo "Commit messages: $commits"
 
-          # Check if the commit message contains the Release pattern
-          if echo "$commits" | grep -q "^release/"; then
+          if echo "$commits" | grep -q "^release:"; then
             echo "Release commit found with tag name: $tag_name"
 
-            # Extract tag name from commit message
-            tag_name=$(echo "$commits" | grep -oP '^release/\K[^\s\[\]]+')
+            tag_name=$(echo "$commits" | grep -oP '^release:\s*\K[^\s\[\]]+')
             branch_name="release/$tag_name"  
 
             echo "Extracted tag name: $tag_name"
             echo "Extracted branch name: $branch_name"
 
-            # Create and push the new tag 
             git tag $tag_name
             git push origin $tag_name 
             echo "Created and pushed new tag $tag_name"
