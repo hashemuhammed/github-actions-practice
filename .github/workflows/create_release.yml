@@ -24,12 +24,6 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: |
-          apt-get update -y
-          apt-get install -y jq
-          npm install -g standard-version
-
       - name: Update CHANGELOG.md
         run: |
           standard_version_output=$(standard-version --dry-run)
