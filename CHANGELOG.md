@@ -1,6 +1,4 @@
 
-### [42.7.3](https://github.com/hashemuhammed/github-actions-practice/compare/v42.7.0...v42.7.3) (2024-08-08)
-
 
 ### Bug Fixes
 
