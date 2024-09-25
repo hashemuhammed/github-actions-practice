@@ -41,6 +41,7 @@ jobs:
 
       - name: Create and push new release branch
         run: |
+          git pull
           git checkout -b release/${{ env.NEW_TAG }}
           git push origin release/${{ env.NEW_TAG }}
 
